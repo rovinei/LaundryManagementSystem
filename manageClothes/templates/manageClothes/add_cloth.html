@@ -1,0 +1,69 @@
+{% extends 'manageClothes/cloth_list.html' %}
+
+{% block status_msg %}
+	<!-- Status message -->
+	<div class="status_msg">
+		<div class="added_msg">
+			{% if count_success_obj > 0 %}
+				<span class="added_status success_status">
+					successfully added {{ count_success_obj }} new clothes
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+
+			{% if count_error_obj > 0 %}
+				<span class="added_status error_status">
+					error adding {{ count_error_obj }} clothes
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+		</div>
+	</div>
+	<!-- /Status message -->
+{% endblock status_msg %}
+
+{% block add_cloth_form %}
+	<div class="add_cloth_form">
+		<form action="" method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+
+			
+			<div class="row">
+				<div class="form-group">
+					<label class="tpye_label" for="id_type">Type:</label>
+					<select id="id_type" name="type">
+						{% if request.user.gender == 'F' or  request.user.gender == 'Other' %}
+						<option value="Skirt">Skirt</option>
+						{% endif %}
+						<option value="Shirt">Shirt</option>
+						<option value="T-Shirt">T-Shirt</option>
+						<option value="Trouser">Trouser</option>
+						<option value="Jean">Jean</option>
+						<option value="Shock">Shock</option>
+						<option value="Towel">Towel</option>
+						<option value="Short">Short</option>
+						<option value="Jacket">Jacket</option>
+						<option value="Blanket">Blanket</option>
+					</select>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="form-group">
+					<input id="id_image" class="inputfile" name="image" type="file" multiple="multiple" accept="image/*" capture="camera">
+					<label class="image_label" for="id_image">
+						<span id="selected_msg"><i class="fa fa-upload"></i>Choose image</span>
+					</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group">
+					<input class="btn submit-btn" type="submit" value="Add cloth">
+				</div>
+			</div>
+
+		</form>
+	</div>
+{% endblock add_cloth_form %}

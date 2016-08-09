@@ -1,0 +1,873 @@
+@import url(https://fonts.googleapis.com/css?family=Dosis:100,300,400,500,600,700);
+
+body{
+	background: #f8f8f8;
+	font-family: "Dosis", sans-serif;
+	font-size: 16px;
+	position: relative;
+	margin: 0;
+	padding-top: 70px;
+}
+
+.site_md_container,
+.site_sm_container,
+.site_full_container{
+	position: relative;
+	margin: 0px;
+	@include clearfix();
+}
+
+.site_full_container{
+	width: 100%;
+	padding: 0px;
+}
+
+.site_md_container{
+	width: 90%;
+	padding: 0px 5%;
+}
+
+.site_sm_container{
+	width: 70%;
+	padding: 0px 15%;
+}
+
+.row{
+	position: relative;
+	width: 100%;
+	@include clearfix();
+}
+
+.site_header{
+	position: fixed;
+	height: 70px;
+	width: 100%;
+	top: 0;
+	background: $white;
+	box-shadow: 0px 1px 3px rgba(9,9,9,0.1);
+	z-index: 99;
+}
+
+.site_logo{
+	position: relative;
+	float: left;
+	width: 15%;
+	img{
+		position: relative;
+		max-width: 100%;
+		display: block;
+		vertical-align: bottom;
+		height: 70px;
+	}
+}
+
+.global_navbar{
+	position: relative;
+	float: left;
+	width: 85%;
+	height: 70px;
+	ul{
+		list-style-type: none;
+		height: 70px;
+	}
+
+	li{
+		display: block;
+		float: left;
+	}
+
+	a{
+		display: block;
+		padding: 26px 25px;
+		text-decoration: none;
+		font-family: "Dosis", sans-serif;
+		font-size: 18px;
+		color: $font_light_black;
+		line-height: 1;
+		@include transition-prefix(all 0.3s ease-out);
+		&:hover{
+			color: lighten($concrete,1%);
+		}
+	}
+
+}
+
+#trigger-sidebar{
+	position: absolute;
+	top: 0px;
+	display: none;
+	right: -33px;
+	padding: 6px 7px;
+	width: 20px;
+	text-align: right;
+	background: $wet-asphalt;
+	border-radius: 0 16px 16px 0;
+	z-index: 20;
+	cursor: pointer;
+	&:after{
+		position: absolute;
+		display: block;
+		width: 15px;
+		height: 26px;
+	}
+
+	i{
+		position: relative;
+		right: 0;
+		text-align: right;
+		color: $white;
+		font-size: 25px;
+	}
+}
+
+.logout{
+	position: absolute;
+	right: 20px;
+	height: 70px;
+
+	.logout-btn{
+		position: relative;
+		display: block;
+		text-decoration: none;
+		color: $white;
+		background: $pomegranate;
+		padding: 7px 15px;
+		line-height: 1;
+		top: 50%;
+    	margin-top: -18px;
+		border-radius: 50px;
+		border: 3px solid $white;
+		@include transition-prefix(all 0.3s ease);
+
+		&:hover{
+			background: lighten($pomegranate,5%);
+			border: 3px solid lighten($pomegranate,46%);
+		}
+	}
+}
+
+.left_sidebar{
+	position: fixed;
+	width: 260px;
+	float: left;
+	top: 70px;
+	left: 0;
+	bottom: 0;
+	background: $wet-asphalt;
+	z-index: 9;
+	/* overflow-y: scroll; */
+	@include clearfix();
+}
+
+.sidebar_nav{
+	position: relative;
+	width: 100%;
+	margin: 0;
+
+	ul{
+		list-style-type: none;
+	}
+
+	li{
+		display: block;
+		width: 100%;
+		border-bottom: 1px solid #ddd;
+	}
+
+	a{
+		display: block;
+		width: 100%;
+		color: $white;
+		text-decoration: none;
+		font-size: 15px;
+		font-weight: 100;
+		line-height: 1;
+		padding: 15px 15px;
+		@include box-sizing(border-box);
+		@include transition-prefix(all .3s ease-out);
+
+		i{
+			color: $white;
+			margin-right: 10px;
+			vertical-align: middle;
+			font-size: 18px;
+		}
+
+		&:hover{
+			color: darken($white,20%);
+			background: lighten($wet-asphalt,5%)
+		}
+	}
+
+}
+
+.page_content{
+	position: relative;
+	width: 100%;
+	float: right;
+	padding: 20px 0 20px 280px;
+	@include box-sizing(border-box);
+	@include clearfix();
+}
+
+.inline-flex{
+	position: relative;
+    width: 100%;
+    float: left;
+    @include clearfix();
+
+}
+
+.user_clothes{
+	position: relative;
+	width: 100%;
+	float: left;
+	/*-webkit-flex-direction: row;
+	flex-direction: row;
+	@include display-flex();
+	@include flex-wrap(wrap);
+	*/
+	@include clearfix();
+
+	.cloth{
+		position: relative;
+		float: left; 
+		text-decoration: none;
+		width: 23%;
+		margin-right: 2%;
+		margin-bottom: 20px;
+		background: $white;
+
+		.cloth_link{
+			display: block;
+			text-decoration: none;
+			width: 100%;
+		}
+
+		.user_link{
+			position: absolute;
+		    top: 5px;
+		    left: 5px;
+		    text-decoration: none;
+		    color: #fff;
+		    background: rgba(0,0,0,0.5);
+		    padding: 3px 7px;
+		    line-height: 1;
+		    font-size: 18px;
+		    vertical-align: middle;
+		}
+
+		figure{
+			position: relative;
+			width: 100%;
+
+			img{
+				display: block;
+				width: 100%;
+				vertical-align: bottom;
+			}
+
+		}
+
+		figcaption{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 5px 15px;
+			background: $cloud;
+			color: #444;
+			font-size: 14px;
+
+			strong{
+				font-size: 14px;
+				font-weight: 500;
+				color: #333;
+				text-transform: uppercase;
+			}
+		}
+
+		.type{
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			padding: 5px 10px;
+			font-size: 14px;
+			color: #333;
+			line-height: 1;
+			background: $color-yellow;
+		}
+
+	}
+
+}
+
+.add_cloth_form{
+	position: relative;
+	width: 100%;
+	margin-bottom: 20px;
+	float: left;
+	@include clearfix();
+
+	form{
+		position: relative;
+		width: 100%;
+		float: left;
+		@include clearfix();
+	}
+
+	.row{
+		position: relative;
+		width: 100%;
+		float: left;
+		margin: 0;
+		padding: 0;
+	}
+
+	.form-group{
+		padding-bottom: 20px; 
+	}
+
+	label{
+		margin-right: 20px;
+		font-size: 16px;
+	}
+
+	select{
+		width: 121px;
+		border: none;
+		outline: none;
+		padding: 8px 10px;
+		color: #555;
+		box-shadow: 1px 1px 1px rgba($concrete,0.3);
+	}
+
+}
+
+.inputfile{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+	display: none;
+}
+
+.inputfile + label {
+    font-size: 1.12em;
+    font-weight: 500;
+    line-height: 1;
+    color: white;
+    background-color: lighten($pomegranate,6%);
+    display: inline-block;
+    padding: 10px 25px;
+    cursor: pointer;
+    i{
+    	margin-right: 10px;
+    }
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: lighten($pomegranate,10%);
+    outline: 3px solid lighten($pomegranate,46%);
+	outline: -webkit-focus-ring-color lighten($pomegranate,46%) 3px;
+}
+
+.inputfile + label * {
+	pointer-events: none;
+}
+
+/** Checkable cloth from **/
+  /**********************/
+
+.cloth_checkbox_form{
+ 	position: relative;
+ 	width: 100%;
+ 	@include clearfix();
+
+ 	.cloth_input{
+ 		position: relative;
+ 		float: left;
+ 		width: 100%;
+ 		@include clearfix();
+ 		@include box-sizing(border-box);
+ 		
+ 	}
+
+ 	label{
+ 		display: block;
+ 		cursor: pointer;
+ 	}
+
+ 	.cloth_checkbox{
+ 		position: absolute;
+ 		top: 50%;
+ 		left: 50%;
+ 		margin-top: -40px;
+ 		margin-left: -40px;
+ 		width: 80px;
+ 		height: 80px;
+ 		outline: none;
+ 		border: none;
+ 		border-radius: 50%;
+ 		visibility: hidden;
+ 		cursor: pointer;
+
+ 		&:before{
+ 			position: absolute;
+  			font: normal normal normal 60px FontAwesome;
+  			font-size: 70px;
+  			color: $green-sea;
+ 		 	text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+           -moz-osx-font-smoothing: grayscale;
+ 			line-height: 1;
+			font-style: normal;
+ 			content: "\f00c";
+ 			display: block;
+ 			top: 50%;
+ 			left: 50%;
+ 			margin-top: -40px;
+ 			margin-left: -40px;
+ 			visibility: visible;
+ 			width: 70px;
+ 			height: 70px;
+ 			background: rgba($midnight-blue,0.1);
+ 			border-radius: 50%;
+ 			border: 5px solid rgba($green-sea,0.3);
+ 			opacity: 0;
+ 			@include transition-prefix(all 0.3s ease);
+ 		}
+
+ 		&:checked{
+ 			&:before{
+ 				opacity: 1;
+ 			}
+ 		}
+ 	}
+
+ 	.form-action{
+ 		position: relative;
+ 		float: left;
+ 		width: 100%;
+ 		display: block;
+ 		margin-bottom: 20px;
+ 		@include clearfix();
+
+ 		span{
+ 			display: inline;
+ 			margin-right: 15px;
+ 		}
+ 		.btn-action{
+ 			display: none;
+ 			margin-right: 15px;
+ 		}
+ 	}
+
+ }
+
+.btn{
+	position: relative;
+	display: block;
+}
+
+.Remove-btn{
+	background: lighten($pomegranate,8%);
+	color: $white;
+	border: none;
+	outline: none;
+	padding: 7px 20px;
+	border-radius: 50px;
+	border: 4px solid #f5f5f5;
+	@include transition-prefix(all 0.3s ease);
+
+	&:hover{
+		background: $pomegranate;
+		border-color: lighten($pomegranate,45%);
+	}
+
+	&:focus{
+		background: $pomegranate;
+		border-color: lighten($pomegranate,45%);
+	}
+
+}
+
+.Transfer-btn{
+	background: lighten($green-sea,2%);
+	color: $white;
+	border: none;
+	outline: none;
+	padding: 7px 20px;
+	border-radius: 50px;
+	border: 4px solid #f5f5f5;
+	@include transition-prefix(all 0.3s ease);
+
+	&:hover{
+		background: $green-sea;
+		border-color: lighten($green-sea,45%);
+	}
+
+	&:focus{
+		background: $green-sea;
+		border-color: lighten($green-sea,45%);
+	}
+}
+
+.submit-btn{
+	background: $green-sea;
+	color: $white;
+	border: none;
+	outline: none;
+	padding: 5px 15px;
+	border-radius: 2px;
+	@include transition-prefix(all 0.3s ease);
+
+	&:hover{
+		background: darken($green-sea,8%);
+		outline: 3px solid lighten($green-sea,52%);
+		outline: -webkit-focus-ring-color lighten($green-sea,52%) 3px;
+	}
+}
+
+.status_msg{
+	position: relative;
+    float: left;
+    width: 100%;
+    padding-right: 20px;
+    margin-bottom: 20px;
+    @include clearfix();
+    @include box-sizing(border-box);
+
+    span{
+    	position: relative;
+    	float: left;
+    	display: block;
+    	padding: 10px 20px;
+    	width: 100%;
+    	color: $white;
+    	@include box-sizing(border-box);
+
+    }
+
+    .success_status{
+    	background: $emerald;
+    }
+
+    .error_status{
+    	background: $pomegranate;
+    }
+
+    .removed_msg,
+    .added_msg{
+    	position: relative;
+    	width: 100%;
+    	float: left;
+    	@include clearfix();
+    	@include box-sizing(border-box);
+    }
+
+    .close-btn{
+    	position: absolute;
+	    right: 10px;
+	    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+	    cursor: pointer;
+
+	    &:hover{
+	    	text-shadow: 0px 0px 0px rgba(0,0,0,0);
+	    }
+    }
+
+}
+
+.cloth_detail{
+	position: relative;
+	width: 100%;
+	padding-right: 20px;
+	@include clearfix();
+	@include box-sizing(border-box);
+
+	img{
+		border: 0;
+	    vertical-align: bottom;
+	    width: 100%;
+	}
+
+	.user_profile{
+		position: relative;
+		width: 100%;
+		float: left;
+		padding-bottom: 10px;
+		@include clearfix();
+		figure{
+			position: relative;
+			display: block;
+			margin-bottom: 5px;
+			display: block;
+			text-align: center;
+			float: left;
+			width: 100%;
+			overflow: hidden;
+			
+			img{
+				width: 110px;
+				height: 110px;
+				border-radius: 50%;
+				border: 3px solid lighten($wet-asphalt,60%);
+			
+			}
+		}
+
+		.username{
+			position: relative;
+			float: left;
+			width: 100%;
+			text-align: center;
+			a{
+				text-decoration: none;
+				display: block;
+				font-size: 20px;
+				font-weight: 400;
+				color: #444;
+			}
+		}
+
+	}
+
+	.cloth{
+		position: relative;
+	    width: 100%;
+	    float: left;
+	    padding: 40px;
+	    @include box-sizing(border-box);
+	    @include clearfix();
+	    background: $white;
+
+	    figure{
+	    	position: relative;
+	    	width: 30%;
+	    	float: left;
+	    	@include box-sizing(border-box);
+
+	    	img{
+	    		border: 3px solid lighten($wet-asphalt,60%);
+	    		float: left;
+	    		margin-bottom: 10px;
+	    	}
+	    }
+
+	    .info{
+	    	position: relative;
+	    	width: 70%;
+	    	float: left;
+	    	padding-left: 30px;
+	    	@include box-sizing(border-box);
+
+	    	.owner,
+	    	.department,
+	    	.roomnumber,
+	    	.type,
+	    	.shortcode,
+	    	.phonenumber,
+	    	.email,
+	    	.is_laundry,
+	    	.is_dirty{
+	    		margin-bottom: 5px;
+	    		font-size: 18px;
+	    		color: #333;
+	    		font-weight: 300;
+	    	}
+
+	    	strong{
+	    		margin-right: 10px;
+	    		font-weight: 500;
+	    	}
+
+	    	i.icon-warning{
+	    		color: lighten($pomegranate,10%);
+	    	}
+
+	    	i.icon-success{
+	    		color: lighten($nephritis,10%);
+	    	}
+
+	    }
+	}
+}
+
+.user_timeline{
+	position: relative;
+	float: left;
+	width: 100%;
+	padding-right: 20px;
+	@include box-sizing(border-box);
+	@include clearfix();
+
+	.row{
+		position: relative;
+		display: block;
+		width: 100%;
+		float: left;
+		@include clearfix();
+	}
+
+	.row.fix_height{
+		height: 400px;
+		overflow: hidden;
+	}
+
+	.row.row_flex{
+		@include display-flex();
+		@include flex-wrap(wrap);
+	}
+
+	.background_cover{
+		position: relative;
+		width: 100%;
+		float: left;
+		background-size: cover;
+	}
+
+	.profile{
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		.profilepic{
+			position: relative;
+			width: 100%;
+			float: left;
+			margin: 30px auto 7px;
+			text-align: center;
+			overflow: hidden;
+			img{
+				height: 150px;
+				width: 150px;
+				margin: 0 auto;
+				border-radius: 50%;
+			}
+		}
+
+		.timeline_username{
+			position: relative;
+			width: 100%;
+			float: left;
+			text-align: center;
+			a{
+				display: block;
+				line-height: 1;
+				color: $white;
+				font-size: 20px;
+				font-weight: 300;
+				text-decoration: none;
+				@include transition-prefix(all 0.3s ease-in);
+
+				&:hover{
+					color: $cloud;
+				}
+			}
+		}
+	}
+
+	.timeline_info{
+		position: relative;
+		float: left;
+		width: 31.33%;
+		background: $cloud;
+		margin-right: 3%;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		@include box-sizing(border-box);
+
+		&:last-child{
+			margin-right: 0 !important;
+		}
+	}
+
+	.head_title{
+		text-align: center;
+		margin-bottom: 20px;
+		margin-top: 15px;
+		h4{
+			display: inline;
+			border-bottom: 2px solid $concrete;
+			padding-bottom: 5px;
+			margin: 0;
+			font-size: 20px;
+			font-weight: 500;
+			line-height: 1;
+			color: #444;
+		}
+	}
+
+	.content{
+		position: relative;
+		float: left;
+		width: 100%;
+		padding: 5px 20px 20px 20px;
+		@include box-sizing(border-box);
+		ul{
+			list-style-type: none;
+		}
+
+		.list{
+			position: relative;
+			display: block;
+			width: 100%;
+			@include clearfix();
+			padding: 2px 0px;
+
+			.title{
+				float: left;
+				width: 50%;
+				vertical-align: top;
+				font-size: 17px;
+				font-weight: 500;
+				i{
+					font-size: 7px;
+					vertical-align: middle;
+					margin-bottom: 0;
+					margin-right: 3px;
+					color: darken($concrete,25%);
+				}
+			}
+
+			.data{
+				float: left;
+				width: 50%;
+				p{
+					word-break: break-word;
+				}
+			}
+		}
+
+	}
+
+	.total_count{
+		position: relative;
+		float: left;
+		width: 100%;
+		text-align: center;
+		color: #ddd;
+		padding: 10px;
+		background: darken($concrete,25%);
+		@include box-sizing(border-box);
+	}
+
+	figure{
+		position: relative;
+		display: block;
+		width: 100%;
+		background-size: cover;
+		img{
+			position: relative;
+			display: block;
+			vertical-align: bottom;
+			max-width: 100%;
+			width: 100%;
+		}
+	}
+}

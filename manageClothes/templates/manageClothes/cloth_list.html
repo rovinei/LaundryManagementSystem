@@ -1,0 +1,100 @@
+{% extends 'manageClothes/base.html' %}
+
+{% block user_timeline %}
+
+{% endblock user_timeline %}
+
+{% block add_cloth_form %}
+
+{% endblock add_cloth_form %}
+
+{% block status_msg %}
+	<div class="status_msg">
+		<div class="removed_msg">
+			{% if removestatus == True %}
+				<span class="removed_status success_status">
+					successfully removed clothes from laundry
+					<i class="fa fa-remove close-btn" data-target="#removed_status"></i>
+				</span>
+			{% endif %}
+
+			{% if removestatus == False %}
+				<span class="removed_status error_status">
+					error while removing clothes from laundry
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+		</div>
+
+		<div class="added_msg">
+			{% if transferstatus == True %}
+				<span class="added_status success_status">
+					successfully added clothes to laundry
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+
+			{% if transferstatus == False %}
+				<span class="added_status error_status">
+					error while adding clothes to laundry
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+
+			{% if nopermissionadd == True %}
+				<span class="added_status error_status">
+					You have no permission to add this cloth to laundry
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+
+			{% if already_at_laundry == True %}
+				<span class="added_status error_status">
+					cloth is already at laundry.
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+
+			{% if existing_other_cloth == True %}
+				<span class="added_status error_status">
+					You don't have permission to add this cloth,<br>
+					but this cloth is already at laundry.
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+
+		</div>
+	</div>
+{% endblock status_msg %}
+
+{% block clothes_list %}
+
+	<div class="user_clothes">
+
+		{% for cloth in user_clothes %}
+		
+			<div class="cloth">
+				<a href="/managecloth/cloth/{{ cloth.shortcode }}/detail" class="cloth_link">
+					<figure>
+						<img src="{{ cloth.image.url }}" alt='{{ cloth.user.username }}'>
+					</figure>
+					<figcaption>
+						<p>
+							<strong>Code {{ i }} : </strong>
+							<i>{{ cloth.shortcode }}</i>
+						</p>
+					</figcaption>
+					<div class="type">
+						<p>{{ cloth.type }}</p>
+					</div>
+				</a>
+				<a href="{{ cloth.user.get_timeline_url }}" class="user_link">
+					@{{ cloth.user.username }}
+				</a>
+			</div>
+			
+		{% endfor %}
+		
+	</div>
+
+{% endblock clothes_list %}

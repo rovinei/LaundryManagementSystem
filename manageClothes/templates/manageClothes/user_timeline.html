@@ -1,0 +1,290 @@
+{% extends 'manageClothes/cloth_list.html' %}
+
+{% block user_timeline %}
+	<div class="user_timeline">
+		<div class="row fix_height">
+			<div class="background_cover">
+				<figure>
+					<img class="background_cover_img" src="{{ user.get_background_cover }}" alt="{{ user.username }} background cover photo">
+				</figure>
+			</div>
+
+			<div class="profile">
+				<div class="profilepic">
+					<figure>
+						<img src="{{ user.get_profile_pic }}" alt="{{ user.username }} profile photo">
+					</figure>
+				</div>
+
+				<div class="timeline_username">
+					<a href="/account/user{{ user.id }}/profile">@{{ user.username }}</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="row row_flex">
+			<div class="timeline_info timeline_about">
+				<div class="head_title">
+					<h4>About</h4>
+				</div>
+				<div class="content">
+					<ul class="square_list">
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								First name
+							</div>
+							<div class="data">
+								<p>{{ user.firstname }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Last name
+							</div>
+							<div class="data">
+								<p>{{ user.lastname }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Department
+							</div>
+							<div class="data">
+								<p>{{ user.department }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Room Number
+							</div>
+							<div class="data">
+								<p>{{ user.roomnumber }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Contact
+							</div>
+							<div class="data">
+								<p>{{ user.phonenumber }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Email
+							</div>
+							<div class="data">
+								<p>{{ user.email }}</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="timeline_info timeline_assets">
+				<div class="head_title">
+					<h4>Clothes Summary</h4>
+				</div>
+
+				<div class="content">
+					<ul class="square_list">
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Trouser
+							</div>
+							<div class="data">
+								<p>{{ total_cloth.trouser }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Jean
+							</div>
+							<div class="data">
+								<p>{{ total_cloth.jean }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Short
+							</div>
+							<div class="data">
+								<p>{{ total_cloth.short }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Shirt
+							</div>
+							<div class="data">
+								<p>{{ total_cloth.shirt }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								T-Shirt
+							</div>
+							<div class="data">
+								<p>{{ total_cloth.tshirt }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Shock
+							</div>
+							<div class="data">
+								<p>{{ total_cloth.shock }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Towel
+							</div>
+							<div class="data">
+								<p>{{ total_cloth.towel }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Jacket
+							</div>
+							<div class="data">
+								<p>{{ total_cloth.jacket }}</p>
+							</div>
+						</li>
+					</ul>
+
+				</div>
+
+				<div class="total_count">
+					<p><strong>Total : </strong> {{ total_clothes }}</p>
+				</div>
+			</div>
+
+			<div class="timeline_info timeline_laundry">
+				<div class="head_title">
+					<h4>Clothes At Laundry</h4>
+				</div>
+
+				<div class="content">
+					<ul class="sqare_list">
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Trouser
+							</div>
+							<div class="data">
+								<p>{{ total_laundry.trouser }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Jean
+							</div>
+							<div class="data">
+								<p>{{ total_laundry.jean }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Short
+							</div>
+							<div class="data">
+								<p>{{ total_laundry.short }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Shirt
+							</div>
+							<div class="data">
+								<p>{{ total_laundry.shirt }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								T-Shirt
+							</div>
+							<div class="data">
+								<p>{{ total_laundry.tshirt }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Shock
+							</div>
+							<div class="data">
+								<p>{{ total_laundry.shock }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Towel
+							</div>
+							<div class="data">
+								<p>{{ total_laundry.towel }}</p>
+							</div>
+						</li>
+
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Jacket
+							</div>
+							<div class="data">
+								<p>{{ total_laundry.jacket }}</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<div class="total_count">
+					<p>
+						<strong>Total : </strong>
+						{{ total_laundry_clothes }}
+					</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endblock user_timeline %}

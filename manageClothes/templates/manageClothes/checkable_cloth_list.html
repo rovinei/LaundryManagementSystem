@@ -1,0 +1,111 @@
+{% extends 'manageClothes/base.html' %}
+
+{% block add_cloth_form %}
+
+{% endblock add_cloth_form %}
+
+{% block status_msg %}
+	<!-- Status message -->
+	<div class="status_msg">
+		<div class="removed_msg">
+			{% if status_remove_msg %}
+				<span class="removed_status success_status">
+					successfully removed {{ count_obj }} clothes
+					<i class="fa fa-remove close-btn" data-target="#removed_status"></i>
+				</span>
+			{% endif %}
+
+			{% if status_remove_msg == False %}
+				<span class="removed_status error_status">
+					error while removing clothes from database
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+		</div>
+
+		<div class="removed_msg">
+			{% if status_remove_laundry_msg %}
+				<span class="removed_status success_status">
+					successfully removed {{ count_obj }} clothes from laundry
+					<i class="fa fa-remove close-btn" data-target="#removed_status"></i>
+				</span>
+			{% endif %}
+
+			{% if status_remove_laundry_msg == False %}
+				<span class="removed_status error_status">
+					error while removing clothes from laundry
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+		</div>
+
+		<div class="added_msg">
+			{% if status_add_msg %}
+				<span class="added_status success_status">
+					successfully added {{ count_obj }} clothes to laundry
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+
+			{% if status_add_msg == False %}
+				<span class="added_status error_status">
+					error while adding clothes to laundry
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+		</div>
+
+		<div class="added_msg">
+			{% if add_cloth_status == True %}
+				<span class="added_status success_status">
+					successfully added {{ count_obj }} new cloth
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+
+			{% if add_cloth_status == False %}
+				<span class="added_status error_status">
+					error while adding new cloth
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+		</div>
+	</div>
+	<!-- /Status message -->
+{% endblock status_msg %}
+
+{% block clothes_list %}
+	<div class="user_clothes">
+
+		<form class="cloth_checkbox_form" action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="form-action">
+
+			<input type="submit" class="btn {{ action_btn_name }}-btn btn-action" value="{{ action_btn_name }}">
+			<span id="selected_count"></span>
+			<span id="guide-msg">{{ page_guide_msg }}</span>
+		</div>
+		{% for cloth in user_clothes %}
+			<div class="cloth">
+				<div class="cloth_input">
+					<label class="cloth_label" for="cloth_{{ cloth.id }}">
+						<figure>
+							<img src="{{ cloth.image.url }}" alt='{{ cloth.user.username }}'>
+						</figure>
+						<figcaption>
+							<p>
+								<strong>Code: </strong>
+								<i>{{ cloth.shortcode }}</i>
+							</p>
+						</figcaption>
+						<div class="type">
+							<p>{{ cloth.type }}</p>
+						</div>
+					</label>
+					<input type="checkbox" value="{{ cloth.id }}" id="cloth_{{ cloth.id }}" class="cloth_checkbox" name="clothes">
+				</div>
+			</div>
+		{% endfor %}
+		</form>
+	</div>
+{% endblock clothes_list %}
