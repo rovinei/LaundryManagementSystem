@@ -492,7 +492,7 @@ def remove_from_bucket(request):
 
 def collect_dirty_cloth(request):
 	if request.user.is_authenticated and request.user.is_admin:
-		room_dict = ['1','26']
+		room_dict = ['1','26','25']
 		context = {}
 		if request.method == 'POST':
 			room_dict = request.POST.getlist('room')
