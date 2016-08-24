@@ -4,6 +4,7 @@ from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import UserManager, BaseUserManager
+from accommodations.models import Accommodation
 from image_cropping import ImageRatioField
 import random, string, datetime, qrcode
 import StringIO
@@ -22,6 +23,16 @@ clothes_type = (
 	('Short','Short'),
 	('Jacket','Jacket'),
 	('Blanket','Blanket'),
+)
+
+DAYS_CHOICE = (
+	('Monday','Monday'),
+	('Tuesday','Tuesday'),
+	('Wednesday','Wednesday'),
+	('Thursday','Thursday'),
+	('Friday','Friday'),
+	('Saturday','Saturday'),
+	('Sunday','Sunday'),
 )
 
 def random_string(length,chars=string.ascii_uppercase+string.ascii_lowercase+string.digits):
@@ -168,6 +179,18 @@ class Clothe(models.Model):
 		self.shortcode = random_string(10,string.ascii_uppercase+string.digits)
 		self.generate_qr()
 		super(Clothe,self).save(*args,**kwargs)
+
+
+class LaundrySchedule(models.Model):
+	room = models.ForeignKey(Accommodation,on_delete=models.CASCADE)
+	day = models.CharField(max_length=50,choices=DAYS_CHOICE)
+	timestamp = models.DateTimeField(auto_now_add=True,auto_now=False)
+	updated = models.DateTimeField(auto_now_add=False,auto_now=True)
+
+	class Meta:
+		unique_together = (('room','day'),)
+
+
 
 
 

@@ -8,6 +8,12 @@
 
 {% endblock add_cloth_form %}
 
+<!-- collect dirty cloth form -->
+{% block collect_cloth_form %}
+
+{% endblock collect_cloth_form %}
+<!-- /collect dirty cloth form -->
+
 {% block status_msg %}
 	<div class="status_msg">
 		<div class="removed_msg">
@@ -27,6 +33,20 @@
 		</div>
 
 		<div class="added_msg">
+			{% if buckettransferstatus == True %}
+				<span class="added_status success_status">
+					successfully added cloth to dirty bucket
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+
+			{% if buckettransferstatus == False %}
+				<span class="added_status error_status">
+					error while adding clothes to dirty bucket
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+
 			{% if transferstatus == True %}
 				<span class="added_status success_status">
 					successfully added clothes to laundry
@@ -43,7 +63,7 @@
 
 			{% if nopermissionadd == True %}
 				<span class="added_status error_status">
-					You have no permission to add this cloth to laundry
+					You have no permission to add this cloth to dirty bucket
 					<i class="fa fa-remove close-btn"></i>
 				</span>
 			{% endif %}
@@ -51,6 +71,13 @@
 			{% if already_at_laundry == True %}
 				<span class="added_status error_status">
 					cloth is already at laundry.
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+
+			{% if already_dirty == True %}
+				<span class="added_status error_status">
+					cloth is already in dirty bucket.
 					<i class="fa fa-remove close-btn"></i>
 				</span>
 			{% endif %}
@@ -68,7 +95,11 @@
 {% endblock status_msg %}
 
 {% block clothes_list %}
-
+	<div class="form-action">
+		<div id="guide-msg">
+			<span>{{ page_guide_msg }}</span>
+		</div>
+	</div>
 	<div class="user_clothes">
 
 		{% for cloth in user_clothes %}

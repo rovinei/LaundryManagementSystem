@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Clothe
+from .models import Clothe, LaundrySchedule
 from image_cropping import ImageCroppingMixin          
 
          
@@ -22,6 +22,12 @@ class ClotheAdmin(ImageCroppingMixin, admin.ModelAdmin):
 		obj.user = request.user
 		obj.save()
 	"""
+class ScheduleAdmin(admin.ModelAdmin):
+	list_display = ('room','day',)
+	fields = ('room','day')
+	search_fields = ('day','room')
+	list_filter = ('day','room')
 
 #admin.site.register(User,UserAdmin)
 admin.site.register(Clothe,ClotheAdmin)
+admin.site.register(LaundrySchedule,ScheduleAdmin)

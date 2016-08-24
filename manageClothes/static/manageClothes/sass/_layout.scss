@@ -96,7 +96,7 @@ body{
 	position: absolute;
 	top: 0px;
 	display: none;
-	right: -33px;
+	left: 0;
 	padding: 6px 7px;
 	width: 20px;
 	text-align: right;
@@ -153,17 +153,30 @@ body{
 	top: 70px;
 	left: 0;
 	bottom: 0;
+	padding: 0 10px 100px 10px;
+	height: 100%;
 	background: $wet-asphalt;
 	z-index: 9;
-	/* overflow-y: scroll; */
+	overflow-y: scroll;
 	@include clearfix();
+	@include box-sizing(border-box);
+
+	.user_profile{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		.username{
+			a{
+				color: $white;
+			}
+		}
+	}
 }
 
 .sidebar_nav{
 	position: relative;
 	width: 100%;
 	margin: 0;
-
+	float: left;
 	ul{
 		list-style-type: none;
 	}
@@ -171,18 +184,20 @@ body{
 	li{
 		display: block;
 		width: 100%;
-		border-bottom: 1px solid #ddd;
+		margin-bottom: 1px;
 	}
 
 	a{
+		position: relative;
 		display: block;
 		width: 100%;
 		color: $white;
 		text-decoration: none;
-		font-size: 15px;
+		font-size: 14px;
 		font-weight: 100;
 		line-height: 1;
-		padding: 15px 15px;
+		padding: 13px 10px;
+		background: rgba(0,0,0,0.1);
 		@include box-sizing(border-box);
 		@include transition-prefix(all .3s ease-out);
 
@@ -194,9 +209,16 @@ body{
 		}
 
 		&:hover{
+			
+		    width: 106%;
+		    margin-left: -3%;
+		    z-index: 5;
+		    opacity: 1;
+		    box-shadow: 0px 0px 7px rgba(0,0,0,0.3);
 			color: darken($white,20%);
 			background: lighten($wet-asphalt,5%)
 		}
+
 	}
 
 }
@@ -222,6 +244,7 @@ body{
 	position: relative;
 	width: 100%;
 	float: left;
+	@include box-sizing(border-box);
 	/*-webkit-flex-direction: row;
 	flex-direction: row;
 	@include display-flex();
@@ -377,6 +400,99 @@ body{
 
 .inputfile + label * {
 	pointer-events: none;
+}
+
+/** Room Checkbox **/
+  /**************/
+
+.collect_cloth_form{
+	position: relative;
+	width: 100%;
+	padding-right: 20px;
+	@include box-sizing(border-box);
+	@include clearfix();
+
+	.row{
+		position: relative;
+		width: 100%;
+		float: left;
+		@include clearfix();
+	}
+
+	form{
+		position: relative;
+		width: 100%;
+		float: left;
+		display: block;
+		padding: 20px;
+		background: $white;
+		@include box-sizing(border-box);
+		@include clearfix();
+	}
+
+	.form-group{
+		position: relative;
+		width: 100%;
+		float: left;
+		@include clearfix();
+
+	}
+
+	.room_checkbox_outer{
+		position: relative;
+		width: 18%;
+		float: left;
+		margin-right: 2%;
+		margin-bottom: 20px;
+		@include clearfix();
+	}
+
+	label{
+		position: relative;
+		background: #f5f5f5;
+		line-height: 1;
+		float: left;
+		width: 100%;
+		cursor: pointer;
+		padding: 12px 35px 12px 12px;
+		display: inline-block;
+		@include box-sizing(border-box);
+		
+	}
+
+	.room_checkbox{
+		position: absolute;
+		display: block;
+		visibility: hidden;
+		top: 5px;
+		right: 5px;
+		bottom: 0;
+		height: 28px;
+		width: 28px;
+		z-index: 2;
+		cursor: pointer;
+		&:after{
+			position: absolute;
+			display: block;
+			font: normal normal normal 18px FontAwesome;
+			content: "\f00c";
+			color: $white;
+			visibility: visible;
+			-webkit-font-smoothing: antialiased;
+           -moz-osx-font-smoothing: grayscale;
+           background: $white;
+           color: #f1f1f1;
+           padding: 5px;
+           opacity: 1;
+           border: 1px solid #f1f1f1;
+           @include transition-prefix(all 0.4s ease);
+		}
+
+		&:checked:after{
+			color: $white;
+			background: $emerald;
+		}
+	}
 }
 
 /** Checkable cloth from **/
@@ -595,47 +711,6 @@ body{
 	    width: 100%;
 	}
 
-	.user_profile{
-		position: relative;
-		width: 100%;
-		float: left;
-		padding-bottom: 10px;
-		@include clearfix();
-		figure{
-			position: relative;
-			display: block;
-			margin-bottom: 5px;
-			display: block;
-			text-align: center;
-			float: left;
-			width: 100%;
-			overflow: hidden;
-			
-			img{
-				width: 110px;
-				height: 110px;
-				border-radius: 50%;
-				border: 3px solid lighten($wet-asphalt,60%);
-			
-			}
-		}
-
-		.username{
-			position: relative;
-			float: left;
-			width: 100%;
-			text-align: center;
-			a{
-				text-decoration: none;
-				display: block;
-				font-size: 20px;
-				font-weight: 400;
-				color: #444;
-			}
-		}
-
-	}
-
 	.cloth{
 		position: relative;
 	    width: 100%;
@@ -655,6 +730,7 @@ body{
 	    		border: 3px solid lighten($wet-asphalt,60%);
 	    		float: left;
 	    		margin-bottom: 10px;
+	    		@include box-sizing(border-box);
 	    	}
 	    }
 
@@ -697,6 +773,48 @@ body{
 	}
 }
 
+.user_profile{
+	position: relative;
+	width: 100%;
+	float: left;
+	padding-bottom: 10px;
+	@include clearfix();
+	figure{
+		position: relative;
+		display: block;
+		margin-bottom: 5px;
+		display: block;
+		text-align: center;
+		float: left;
+		width: 100%;
+		overflow: hidden;
+		
+		img{
+			width: 110px;
+			height: 110px;
+			border-radius: 50%;
+			border: 3px solid lighten($wet-asphalt,60%);
+			vertical-align: bottom;
+		
+		}
+	}
+
+	.username{
+		position: relative;
+		float: left;
+		width: 100%;
+		text-align: center;
+		a{
+			text-decoration: none;
+			display: block;
+			font-size: 20px;
+			font-weight: 400;
+			color: #444;
+		}
+	}
+
+}
+
 .user_timeline{
 	position: relative;
 	float: left;
@@ -714,7 +832,7 @@ body{
 	}
 
 	.row.fix_height{
-		height: 400px;
+		/*height: 400px;*/
 		overflow: hidden;
 	}
 
@@ -801,6 +919,14 @@ body{
 			line-height: 1;
 			color: #444;
 		}
+
+		.accordian-icon {
+		    position: absolute;
+		    display: none;
+		    right: 10px;
+		    font-size: 1.3em;
+		    color: $concrete;
+		}
 	}
 
 	.content{
@@ -869,5 +995,60 @@ body{
 			max-width: 100%;
 			width: 100%;
 		}
+	}
+}
+
+.section_heading{
+	position: relative;
+	padding-right: 20px;
+	width: 100%;
+	margin-bottom: 20px;
+	@include box-sizing(border-box);
+	@include clearfix();
+
+
+	.title{
+		position: relative;
+		display: inline-block;
+		border-bottom: 2px solid #eee;
+		margin-bottom: 10px;
+
+		&:after{
+			position:absolute;
+			display: inline-block;
+			content: "";
+			bottom: -2px;
+			left: 0;
+			height: 2px;
+			width: 80px;
+			background: $emerald;
+		}
+
+		p{
+			padding-bottom: 5px;
+			font-size: 120%;
+			color: #333;
+		}
+
+	}
+
+	.desc{
+
+		position: relative;
+		float: left;
+		width: 100%;
+		p{
+			font-size: 100%;
+			font-weight: 200;
+			color: #555;
+		}
+
+		i{
+			color: #777;
+			font-weight: 100;
+			font-size: 80%;
+			margin-right: 5px;
+		}
+
 	}
 }

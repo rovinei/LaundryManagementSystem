@@ -28,6 +28,9 @@
 				<li><a href="/managecloth/dashboard">DASHBOARD</a></li>
 				<li><a href="/managecloth/cloth/add">UPLOAD CLOTH</a></li>
 				<li><a href="/managecloth/laundry">LAUNDRY</a></li>
+				{% if request.user.is_admin %}
+				<li><a href="/managecloth/laundry/collect">COLLECT CLOTHES</a></li>
+				{% endif %}
 			</ul>
 		</div>
 		<div class="logout">
@@ -40,13 +43,24 @@
 <div class="site_full_container">
 	<!-- Left sidebar -->
 	
+	<div id="trigger-sidebar">
+		<i class="fa fa-chevron-circle-right"></i>
+	</div>
 
 	<div class="left_sidebar">
-		<div id="trigger-sidebar">
-			<i class="fa fa-chevron-circle-right"></i>
+
+		<div class="user_profile">
+			<figure>
+				<img src="{{ request.user.get_profile_pic }}">
+			</figure>
+			<div class="username">
+				<a href="{{ request.user.get_timeline_url }}"> @{{ request.user.get_full_name }}</a>
+			</div>
 		</div>
+
 		<div class="sidebar_nav">
 			<ul class="nav">
+			<!--
 				<li>
 					<a href="/managecloth/cloth/add">
 						<i class="fa fa-plus-circle"></i> Add New Cloth
@@ -73,6 +87,12 @@
 					</a>
 				</li>
 				<li>
+					<a href="/managecloth/user/dirty_bucket/remove">
+						<i class="flaticon-nylon-jacket"></i> Remove From Dirty bucket
+					</a>
+				</li>
+				-->
+				<li>
 					<a href="/managecloth/laundry/mycloth">
 						<i class="flaticon-nylon-jacket"></i> My Clothes At Laundry
 					</a>
@@ -82,6 +102,7 @@
 						<i class="flaticon-denim-jacket"></i> All Clothes At Laundry
 					</a>
 				</li>
+				{% if request.user.is_admin %}
 				<li>
 					<a href="/managecloth/laundry/transfer">
 						<i class="fa fa-plus-circle"></i> Transfer Clothes To Laundry
@@ -92,6 +113,7 @@
 						<i class="fa fa-minus-circle"></i> Remove Clothes From Laundry
 					</a>
 				</li>
+				{% endif %}
 			</ul>
 		</div>
 	</div>
@@ -114,6 +136,12 @@
 		{% endblock add_cloth_form %}
 		<!-- /add cloth form -->
 
+		<!-- collect dirty cloth form -->
+		{% block collect_cloth_form %}
+
+		{% endblock collect_cloth_form %}
+		<!-- /collect dirty cloth form -->
+
 		{% block cloth_detail %}
 
 		{% endblock cloth_detail %}
@@ -123,7 +151,6 @@
 			
 		{% endblock clothes_list %}
 		<!-- /user clothes list -->
-
 
 	</div>
 	<!-- /Page content -->

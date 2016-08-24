@@ -74,6 +74,7 @@ function  resizeWindow(){
 	});
 }
 
+
 $(document).ready(function(){
 	checkedCloth();
 	customInputFile();

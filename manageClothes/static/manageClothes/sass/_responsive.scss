@@ -124,8 +124,85 @@
 		display: none;
 	}
 
+	.page_content{
+		padding: 20px 0px;
+	}
+
+	.logout{
+		right: 10px;
+	}
+
+	.status_msg{
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+
+	.cloth_detail{
+		padding-left: 20px;
+
+		.cloth{
+			padding: 20px;
+
+			figure{
+				width: 100%;
+				img{
+					width: 100%;
+				}
+			}
+
+			.info{
+				width: 100%;
+				padding: 0;
+			}
+		}
+	}
+
+	.user_clothes{
+		padding-left: 1%;
+		.cloth{
+			width: 49%;
+			margin-right: 1%;
+			margin-bottom: 5px;
+		}
+	}
+
+	.user_timeline{
+		padding-right: 1%;
+		padding-left: 1%;
+		.timeline_info{
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: 0px;
+			margin-top: 5px;
+		}
+
+		.profile{
+			.profilepic{
+				img{
+					width: 90px;
+					height: 90px;
+				}
+			}
+		}
+
+		.row.row_flex{
+			display: block;
+		}
+
+		.head_title{
+			.accordian-icon{
+				display: inline;
+			}
+		}
+
+		.content{
+			display: none;
+		}
+
+	}
+
 }
 
 @media only screen and (max-width: 420px){
-	
+
 }

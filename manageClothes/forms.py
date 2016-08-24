@@ -7,4 +7,5 @@ class AddClotheForm(forms.ModelForm):
 	class Meta:
 		model = Clothe
 		fields = ('type','image')
+
 		

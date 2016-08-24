@@ -16,7 +16,7 @@ class UserChangeForm(forms.ModelForm):
 
 	class Meta:
 		model = User
-		fields = ('username', 'firstname', 'lastname', 'gender', 'email', 'phonenumber', 'profilepic', 'password', 'is_admin','is_active')
+		fields = ('username', 'firstname', 'lastname', 'gender', 'room','department', 'email', 'phonenumber', 'profilepic', 'password', 'is_admin','is_active')
 	def clean_password(self):
 	# Regardless of what the user provides, return the initial value.
 	# This is done here, rather than on the field, because the
@@ -32,24 +32,26 @@ class UserAdmin(BaseUserAdmin):
 	# The fields to be used in displaying the User model.
 	# These override the definitions on the base UserAdmin
 	# that reference specific fields on auth.User.
-	list_display = ('username', 'firstname', 'lastname', 'gender','is_admin')
-	list_filter = ('is_admin','username', 'gender')
+	list_display = ('username', 'department', 'room', 'firstname', 'lastname', 'gender','is_admin')
+	list_filter = ('is_admin','username', 'gender','department',)
 	fieldsets = (
-		(_('Personal info'),{'fields':('username', 'firstname', 'lastname', 'gender')}),
+		(_('Personal info'),{'fields':('username', 'firstname', 'lastname', 'gender','room')}),
 		(_('Profile'),{'fields':('profilepic',)}),
 		(_('Contact info'),{'fields':('email', 'phonenumber',)}),
+		(_('Department'),{'classes': 'wide','fields':('department','room',)}),
 		(_('Permission'),{'fields':('is_admin',)}),
 		(_('Account status'),{'fields':('is_active',)}),
 		(_('Security'),{'fields':('password',)})
 	)
 
 	add_fieldsets = (
-		('Personal info',{'classes':'wide','fields':('username','firstname','lastname', 'gender')}),
-		('Contact info',{'classes':'wide','fields':('email', 'phonenumber',)}),
+		(_('Personal info'),{'classes':'wide','fields':('username','firstname','lastname', 'gender',)}),
 		(_('Profile'),{'fields':('profilepic',)}),
-		('Permission',{'classes':'wide','fields':('is_admin',)}),
-		('Account status',{'classes':'wide','fields':('is_active',)}),
-		('Security',{'fields':('password1', 'password2',)}),
+		(_('Contact info'),{'classes':'wide','fields':('email', 'phonenumber',)}),
+		(_('Department'),{'classes': 'wide','fields':('department','room',)}),
+		(_('Permission'),{'classes':'wide','fields':('is_admin',)}),
+		(_('Account status'),{'classes':'wide','fields':('is_active',)}),
+		(_('Security'),{'fields':('password1', 'password2',)}),
 	)
 	ordering = ('username','joined')
 	empty_value_display = '-empty-'

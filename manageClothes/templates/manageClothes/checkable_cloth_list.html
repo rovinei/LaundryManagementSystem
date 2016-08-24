@@ -70,6 +70,23 @@
 				</span>
 			{% endif %}
 		</div>
+
+		<div class="removed_msg">
+			{% if status_add_bucket == True %}
+				<span class="added_status success_status">
+					successfully added {{ count_obj }} clothes to bucket
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+
+			{% if status_add_bucket == False %}
+				<span class="added_status error_status">
+					error while adding cloth to bucket
+					<i class="fa fa-remove close-btn"></i>
+				</span>
+			{% endif %}
+		</div>
+
 	</div>
 	<!-- /Status message -->
 {% endblock status_msg %}

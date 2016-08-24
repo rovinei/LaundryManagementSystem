@@ -552,7 +552,7 @@ body {
   position: absolute;
   top: 0px;
   display: none;
-  right: -33px;
+  left: 0;
   padding: 6px 7px;
   width: 20px;
   text-align: right;
@@ -604,33 +604,48 @@ body {
   top: 70px;
   left: 0;
   bottom: 0;
+  padding: 0 10px 100px 10px;
+  height: 100%;
   background: #34495E;
   z-index: 9;
-  /* overflow-y: scroll; */ }
+  overflow-y: scroll;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box; }
   .left_sidebar::after {
     clear: both;
     content: "";
     display: block; }
+  .left_sidebar .user_profile {
+    padding-top: 20px;
+    padding-bottom: 20px; }
+    .left_sidebar .user_profile .username a {
+      color: #fff; }
 
 .sidebar_nav {
   position: relative;
   width: 100%;
-  margin: 0; }
+  margin: 0;
+  float: left; }
   .sidebar_nav ul {
     list-style-type: none; }
   .sidebar_nav li {
     display: block;
     width: 100%;
-    border-bottom: 1px solid #ddd; }
+    margin-bottom: 1px; }
   .sidebar_nav a {
+    position: relative;
     display: block;
     width: 100%;
     color: #fff;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 100;
     line-height: 1;
-    padding: 15px 15px;
+    padding: 13px 10px;
+    background: rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -647,6 +662,11 @@ body {
       vertical-align: middle;
       font-size: 18px; }
     .sidebar_nav a:hover {
+      width: 106%;
+      margin-left: -3%;
+      z-index: 5;
+      opacity: 1;
+      box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
       color: #cccccc;
       background: #3d566e; }
 
@@ -678,6 +698,11 @@ body {
   position: relative;
   width: 100%;
   float: left;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
   /*-webkit-flex-direction: row;
 	flex-direction: row;
 	@include display-flex();
@@ -806,6 +831,111 @@ body {
 
 .inputfile + label * {
   pointer-events: none; }
+
+/** Room Checkbox **/
+/**************/
+.collect_cloth_form {
+  position: relative;
+  width: 100%;
+  padding-right: 20px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box; }
+  .collect_cloth_form::after {
+    clear: both;
+    content: "";
+    display: block; }
+  .collect_cloth_form .row {
+    position: relative;
+    width: 100%;
+    float: left; }
+    .collect_cloth_form .row::after {
+      clear: both;
+      content: "";
+      display: block; }
+  .collect_cloth_form form {
+    position: relative;
+    width: 100%;
+    float: left;
+    display: block;
+    padding: 20px;
+    background: #fff;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box; }
+    .collect_cloth_form form::after {
+      clear: both;
+      content: "";
+      display: block; }
+  .collect_cloth_form .form-group {
+    position: relative;
+    width: 100%;
+    float: left; }
+    .collect_cloth_form .form-group::after {
+      clear: both;
+      content: "";
+      display: block; }
+  .collect_cloth_form .room_checkbox_outer {
+    position: relative;
+    width: 18%;
+    float: left;
+    margin-right: 2%;
+    margin-bottom: 20px; }
+    .collect_cloth_form .room_checkbox_outer::after {
+      clear: both;
+      content: "";
+      display: block; }
+  .collect_cloth_form label {
+    position: relative;
+    background: #f5f5f5;
+    line-height: 1;
+    float: left;
+    width: 100%;
+    cursor: pointer;
+    padding: 12px 35px 12px 12px;
+    display: inline-block;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box; }
+  .collect_cloth_form .room_checkbox {
+    position: absolute;
+    display: block;
+    visibility: hidden;
+    top: 5px;
+    right: 5px;
+    bottom: 0;
+    height: 28px;
+    width: 28px;
+    z-index: 2;
+    cursor: pointer; }
+    .collect_cloth_form .room_checkbox:after {
+      position: absolute;
+      display: block;
+      font: normal normal normal 18px FontAwesome;
+      content: "\f00c";
+      color: #fff;
+      visibility: visible;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: #fff;
+      color: #f1f1f1;
+      padding: 5px;
+      opacity: 1;
+      border: 1px solid #f1f1f1;
+      -webkit-transition: all 0.4s ease;
+      -moz-transition: all 0.4s ease;
+      -o-transition: all 0.4s ease;
+      -ms-transition: all 0.4s ease;
+      transition: all 0.4s ease; }
+    .collect_cloth_form .room_checkbox:checked:after {
+      color: #fff;
+      background: #2ecc71; }
 
 /** Checkable cloth from **/
 /**********************/
@@ -1024,40 +1154,6 @@ body {
     border: 0;
     vertical-align: bottom;
     width: 100%; }
-  .cloth_detail .user_profile {
-    position: relative;
-    width: 100%;
-    float: left;
-    padding-bottom: 10px; }
-    .cloth_detail .user_profile::after {
-      clear: both;
-      content: "";
-      display: block; }
-    .cloth_detail .user_profile figure {
-      position: relative;
-      display: block;
-      margin-bottom: 5px;
-      display: block;
-      text-align: center;
-      float: left;
-      width: 100%;
-      overflow: hidden; }
-      .cloth_detail .user_profile figure img {
-        width: 110px;
-        height: 110px;
-        border-radius: 50%;
-        border: 3px solid #dae2ea; }
-    .cloth_detail .user_profile .username {
-      position: relative;
-      float: left;
-      width: 100%;
-      text-align: center; }
-      .cloth_detail .user_profile .username a {
-        text-decoration: none;
-        display: block;
-        font-size: 20px;
-        font-weight: 400;
-        color: #444; }
   .cloth_detail .cloth {
     position: relative;
     width: 100%;
@@ -1085,7 +1181,12 @@ body {
       .cloth_detail .cloth figure img {
         border: 3px solid #dae2ea;
         float: left;
-        margin-bottom: 10px; }
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -o-box-sizing: border-box; }
     .cloth_detail .cloth .info {
       position: relative;
       width: 70%;
@@ -1117,6 +1218,42 @@ body {
       .cloth_detail .cloth .info i.icon-success {
         color: #36d278; }
 
+.user_profile {
+  position: relative;
+  width: 100%;
+  float: left;
+  padding-bottom: 10px; }
+  .user_profile::after {
+    clear: both;
+    content: "";
+    display: block; }
+  .user_profile figure {
+    position: relative;
+    display: block;
+    margin-bottom: 5px;
+    display: block;
+    text-align: center;
+    float: left;
+    width: 100%;
+    overflow: hidden; }
+    .user_profile figure img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid #dae2ea;
+      vertical-align: bottom; }
+  .user_profile .username {
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: center; }
+    .user_profile .username a {
+      text-decoration: none;
+      display: block;
+      font-size: 20px;
+      font-weight: 400;
+      color: #444; }
+
 .user_timeline {
   position: relative;
   float: left;
@@ -1141,7 +1278,7 @@ body {
       content: "";
       display: block; }
   .user_timeline .row.fix_height {
-    height: 400px;
+    /*height: 400px;*/
     overflow: hidden; }
   .user_timeline .row.row_flex {
     display: -webkit-flex;
@@ -1225,6 +1362,12 @@ body {
       font-weight: 500;
       line-height: 1;
       color: #444; }
+    .user_timeline .head_title .accordian-icon {
+      position: absolute;
+      display: none;
+      right: 10px;
+      font-size: 1.3em;
+      color: #95a5a6; }
   .user_timeline .content {
     position: relative;
     float: left;
@@ -1287,6 +1430,52 @@ body {
       vertical-align: bottom;
       max-width: 100%;
       width: 100%; }
+
+.section_heading {
+  position: relative;
+  padding-right: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box; }
+  .section_heading::after {
+    clear: both;
+    content: "";
+    display: block; }
+  .section_heading .title {
+    position: relative;
+    display: inline-block;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 10px; }
+    .section_heading .title:after {
+      position: absolute;
+      display: inline-block;
+      content: "";
+      bottom: -2px;
+      left: 0;
+      height: 2px;
+      width: 80px;
+      background: #2ecc71; }
+    .section_heading .title p {
+      padding-bottom: 5px;
+      font-size: 120%;
+      color: #333; }
+  .section_heading .desc {
+    position: relative;
+    float: left;
+    width: 100%; }
+    .section_heading .desc p {
+      font-size: 100%;
+      font-weight: 200;
+      color: #555; }
+    .section_heading .desc i {
+      color: #777;
+      font-weight: 100;
+      font-size: 80%;
+      margin-right: 5px; }
 
 @media only screen and (max-width: 1100px) {
   .user_clothes .cloth {
@@ -1352,7 +1541,48 @@ body {
 
 @media only screen and (max-width: 520px) {
   .global_navbar {
-    display: none; } }
+    display: none; }
+  .page_content {
+    padding: 20px 0px; }
+  .logout {
+    right: 10px; }
+  .status_msg {
+    padding-right: 10px;
+    padding-left: 10px; }
+  .cloth_detail {
+    padding-left: 20px; }
+    .cloth_detail .cloth {
+      padding: 20px; }
+      .cloth_detail .cloth figure {
+        width: 100%; }
+        .cloth_detail .cloth figure img {
+          width: 100%; }
+      .cloth_detail .cloth .info {
+        width: 100%;
+        padding: 0; }
+  .user_clothes {
+    padding-left: 1%; }
+    .user_clothes .cloth {
+      width: 49%;
+      margin-right: 1%;
+      margin-bottom: 5px; }
+  .user_timeline {
+    padding-right: 1%;
+    padding-left: 1%; }
+    .user_timeline .timeline_info {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 0px;
+      margin-top: 5px; }
+    .user_timeline .profile .profilepic img {
+      width: 90px;
+      height: 90px; }
+    .user_timeline .row.row_flex {
+      display: block; }
+    .user_timeline .head_title .accordian-icon {
+      display: inline; }
+    .user_timeline .content {
+      display: none; } }
 
 /* -------------------------------------------------------------------------
 		print.scss

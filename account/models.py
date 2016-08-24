@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, UserManager, BaseUserManager, PermissionsMixin
 #from manageClothes.models import random_string
+from accommodations.models import Accommodation
 import uuid, string, random, os
 from datetime import datetime
 today = datetime.today()
@@ -85,7 +86,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	profilepic = models.ImageField(upload_to=handle_upload_profile, default='/media/images/default_user_profile.png')
 	background_cover = models.ImageField(upload_to=handle_upload_cover, default='/media/images/default_user_cover_photo_gallaxy.png')
 	gender = models.CharField(max_length=6,choices=Gender,default='Other')
-	accommodation = models.CharField(max_length=50,blank=True,null=True,default='')
+	room = models.ForeignKey(Accommodation, null=True,blank=True,on_delete=models.CASCADE)
 	department = models.CharField(max_length=50,choices=departmentList,default='Other')
 	joined = models.DateTimeField(auto_now_add=True,auto_now=False)
 	updated = models.DateTimeField(auto_now_add=False,auto_now=True)
@@ -118,7 +119,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 		return '/account/user/{}/profile'.format(self.id)
 
 	def get_full_name(self):
-		return self.username
+		return str(self.firstname + self.lastname)
 
 	def get_short_name(self):
 		return self.username

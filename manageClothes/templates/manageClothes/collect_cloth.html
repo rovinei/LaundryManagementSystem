@@ -1,0 +1,47 @@
+{% extends 'manageClothes/cloth_list.html' %}
+
+{% block collect_cloth_form %}
+	<div class="section_heading">
+		<div class="title">
+			<p>
+				List of rooms based on schedule
+			</p>
+		</div>
+
+		<div class="desc">
+			<p>
+				<i class="fa fa-asterisk"></i>
+				Please choose and check the following room name and number to collect the dirty clothes.
+			</p>
+		</div>
+	</div>
+
+	<div class="collect_cloth_form">
+		<form action="" method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+
+			<div class="row">
+				<div class="form-group">
+					{% for room in rooms %}
+					<div class="room_checkbox_outer">
+						
+						<input type="checkbox" name="room" value="{{ room.room.id }}" class="room_checkbox" id="room{{ room.room.id }}">
+
+						<label class="room_label" for="room{{ room.room.id }}">
+							{{ room.room }}
+						</label>
+						
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group">
+					<input class="btn submit-btn" type="submit" value="Collect clothes">
+				</div>
+			</div>
+
+		</form>
+	</div>
+{% endblock collect_cloth_form %}
