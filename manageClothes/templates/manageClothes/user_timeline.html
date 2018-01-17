@@ -66,7 +66,7 @@
 								Room Number
 							</div>
 							<div class="data">
-								<p>{{ user.roomnumber }}</p>
+								<p>{{ user.room }}</p>
 							</div>
 						</li>
 
@@ -101,6 +101,17 @@
 
 				<div class="content" id="cloth-summary">
 					<ul class="square_list">
+						{% if request.user.gender == 'F' or  request.user.gender == 'Other' %}
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Skirt
+							</div>
+							<div class="data">
+								<p>{{ total_cloth.skirt }}</p>
+							</div>
+						</li>
+						{% endif %}
 						<li class="list">
 							<div class="title">
 								<i class="fa fa-stop"></i>
@@ -197,7 +208,17 @@
 
 				<div class="content" id="laundry-cloth">
 					<ul class="sqare_list">
-
+						{% if request.user.gender == 'F' or  request.user.gender == 'Other' %}
+						<li class="list">
+							<div class="title">
+								<i class="fa fa-stop"></i>
+								Skirt
+							</div>
+							<div class="data">
+								<p>{{ total_laundry.skirt }}</p>
+							</div>
+						</li>
+						{% endif %}
 						<li class="list">
 							<div class="title">
 								<i class="fa fa-stop"></i>

@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^managecloth/laundry/transfer', views.add_cloth_to_laundry),
     url(r'^managecloth/laundry/remove', views.remove_cloth_from_laundry),
     url(r'^managecloth/qrcode/(?P<code>\w{10})/add_remove', views.add_remove_with_qr,name="add_remove"),
+    url(r'^file/upload_progress/', views.upload_progress)
 ]

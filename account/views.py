@@ -16,6 +16,7 @@ clothes_type = [
 	'Short',
 	'Jacket',
 	'Blanket',
+	'Skirt',
 ]
 
 @csrf_protect

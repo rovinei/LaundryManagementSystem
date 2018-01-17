@@ -6,12 +6,14 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import UserManager, BaseUserManager
 from accommodations.models import Accommodation
 from image_cropping import ImageRatioField
-import random, string, datetime, qrcode
-import StringIO
+import random, string, datetime, qrcode, StringIO, os
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from account.models import User
 from django.conf import settings
 from datetime import datetime
+from django.db.models.signals import post_delete, pre_save
+from django.dispatch import receiver
+
 today = datetime.today()
 clothes_type = (
 	('Shirt','Shirt'),
@@ -23,6 +25,7 @@ clothes_type = (
 	('Short','Short'),
 	('Jacket','Jacket'),
 	('Blanket','Blanket'),
+	('Skirt','Skirt'),
 )
 
 DAYS_CHOICE = (
@@ -44,30 +47,6 @@ def handle_upload(instance,filename):
 
 def qrcode_location(instance,filename):
 	return "{}/{}/{}".format(instance.user.id,'qrimage',filename)
-
-"""
-class User(models.Model):
-	uniqueid = models.IntegerField()
-	firstname = models.CharField(max_length=50,blank=True,null=True)
-	lastname = models.CharField(max_length=50)
-	username = models.CharField(max_length=100,unique=True)
-	email = models.EmailField(max_length=100,unique=True,blank=True,null=True)
-	phonenumber = models.IntegerField(unique=True,blank=True,null=True)
-	timestamp = models.DateTimeField(auto_now=False,auto_now_add=True)
-	updated = models.DateTimeField(auto_now=True,auto_now_add=False)
-
-	def __unicode__(self):
-		return self.username
-
-	def __str__(self):
-		return self.username
-
-	def save(self,*args,**kwargs):
-		
-		self.uniqueid = random_string(15,string.digits)
-		super(User,self).save(*args,**kwargs)
-
-"""
 
 class QRCode(models.Model):
 	qrimage = models.ImageField(upload_to=handle_upload)
@@ -180,6 +159,35 @@ class Clothe(models.Model):
 		self.generate_qr()
 		super(Clothe,self).save(*args,**kwargs)
 
+@receiver(post_delete, sender=Clothe)
+def auto_delete_file_on_delete(sender, instance, **kwargs):
+    """Deletes file from filesystem
+    when corresponding `MediaFile` object is deleted.
+    """
+    if instance.image:
+        if os.path.isfile(instance.image.path):
+            os.remove(instance.image.path)
+    if instance.qrimage:
+        if os.path.isfile(instance.qrimage.path):
+            os.remove(instance.qrimage.path)
+
+@receiver(pre_save, sender=Clothe)
+def auto_delete_file_on_change(sender, instance, **kwargs):
+    """Deletes file from filesystem
+    when corresponding `MediaFile` object is changed.
+    """
+    if not instance.pk:
+        return False
+
+    try:
+        old_file = Clothe.objects.get(pk=instance.pk).image
+    except MediaFile.DoesNotExist:
+        return False
+
+    new_file = instance.image
+    if not old_file == new_file:
+        if os.path.isfile(old_file.path):
+            os.remove(old_file.path)
 
 class LaundrySchedule(models.Model):
 	room = models.ForeignKey(Accommodation,on_delete=models.CASCADE)

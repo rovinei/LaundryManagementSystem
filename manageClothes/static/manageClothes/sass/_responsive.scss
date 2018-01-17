@@ -25,7 +25,7 @@
 	.user_clothes{
 		.cloth{
 			width: 46%;
-		    margin-right: 4%;
+		    margin-left: 4%;
 		    margin-bottom: 20px;
 		}
 	}
@@ -44,7 +44,6 @@
 	}
 
 	.left_sidebar{
-		width: 230px;
 		top: 60px;
 	}
 
@@ -54,10 +53,6 @@
 			padding: 12px 15px;
 		}
 	}
-	
-	.page_content{
-		padding: 20px 0 20px 250px;
-	}
 
 	.site_header{
 		height: 60px;
@@ -65,7 +60,7 @@
 
 	.global_navbar{
 		height: 60px;
-
+		width: auto;
 		ul{
 			height: 60px;
 		}
@@ -77,6 +72,8 @@
 	}
 
 	.site_logo{
+		width: auto;
+		height: 60px;
 		img{
 			height: 60px;
 		}
@@ -84,6 +81,7 @@
 
 	.logout{
 		height: 60px;
+		width: auto;
 		.logout-btn{
 			font-size: 14px;
 		}
@@ -92,8 +90,8 @@
 
 @media only screen and (max-width: 640px){
 	.left_sidebar{
-		width: 200px;
-		left: -200px
+		display: none;
+		width: 260px;
 	}
 
 	#trigger-sidebar{
@@ -108,7 +106,7 @@
 	}
 	
 	.page_content{
-		padding: 20px 0 20px 20px;
+		padding: 20px 20px 20px 0;
 	}
 
 	.global_navbar{
@@ -161,7 +159,7 @@
 		padding-left: 1%;
 		.cloth{
 			width: 49%;
-			margin-right: 1%;
+			margin-left: 1%;
 			margin-bottom: 5px;
 		}
 	}

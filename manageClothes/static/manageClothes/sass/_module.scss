@@ -1,0 +1,14 @@
+.form-action{
+	position: relative;
+	padding-left: 20px;
+	@include clearfix();
+
+	#guide-msg{
+		padding: 20px;
+
+		span{
+			padding: 5px 8px;
+			background: $cloud !important;
+		}
+	}
+}

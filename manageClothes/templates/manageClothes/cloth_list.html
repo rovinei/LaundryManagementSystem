@@ -95,13 +95,13 @@
 {% endblock status_msg %}
 
 {% block clothes_list %}
-	<div class="form-action">
-		<div id="guide-msg">
-			<span>{{ page_guide_msg }}</span>
-		</div>
-	</div>
+	
 	<div class="user_clothes">
-
+		<div class="form-action">
+			<div id="guide-msg">
+				<span>{{ page_guide_msg }}</span>
+			</div>
+		</div>
 		{% for cloth in user_clothes %}
 		
 			<div class="cloth">

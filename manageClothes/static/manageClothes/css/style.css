@@ -473,7 +473,8 @@ body {
 .site_sm_container,
 .site_full_container {
   position: relative;
-  margin: 0px; }
+  margin: 0 auto;
+  max-width: 1400px; }
   .site_md_container::after,
   .site_sm_container::after,
   .site_full_container::after {
@@ -524,7 +525,7 @@ body {
 .global_navbar {
   position: relative;
   float: left;
-  width: 85%;
+  width: 75%;
   height: 70px; }
   .global_navbar ul {
     list-style-type: none;
@@ -573,14 +574,16 @@ body {
     font-size: 25px; }
 
 .logout {
-  position: absolute;
-  right: 20px;
+  position: relative;
+  float: right;
+  width: 10%;
   height: 70px; }
   .logout .logout-btn {
     position: relative;
     display: block;
     text-decoration: none;
     color: #fff;
+    text-align: center;
     background: #c0392b;
     padding: 7px 15px;
     line-height: 1;
@@ -599,10 +602,9 @@ body {
 
 .left_sidebar {
   position: fixed;
-  width: 260px;
+  width: 280px;
   float: left;
   top: 70px;
-  left: 0;
   bottom: 0;
   padding: 0 10px 100px 10px;
   height: 100%;
@@ -674,7 +676,7 @@ body {
   position: relative;
   width: 100%;
   float: right;
-  padding: 20px 0 20px 280px;
+  padding: 80px 0 20px 280px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -717,7 +719,7 @@ body {
     float: left;
     text-decoration: none;
     width: 23%;
-    margin-right: 2%;
+    margin-left: 2%;
     margin-bottom: 20px;
     background: #fff; }
     .user_clothes .cloth .cloth_link {
@@ -837,7 +839,7 @@ body {
 .collect_cloth_form {
   position: relative;
   width: 100%;
-  padding-right: 20px;
+  padding-left: 20px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1006,11 +1008,20 @@ body {
     .cloth_checkbox_form .cloth_checkbox:checked:before {
       opacity: 1; }
   .cloth_checkbox_form .form-action {
-    position: relative;
+    position: fixed;
     float: left;
     width: 100%;
     display: block;
-    margin-bottom: 20px; }
+    background: #ecf0f1;
+    top: 70px;
+    z-index: 2;
+    /* margin-bottom: 20px; */
+    padding: 20px 0 20px 20px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box; }
     .cloth_checkbox_form .form-action::after {
       clear: both;
       content: "";
@@ -1087,7 +1098,7 @@ body {
   position: relative;
   float: left;
   width: 100%;
-  padding-right: 20px;
+  padding-left: 20px;
   margin-bottom: 20px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1140,7 +1151,7 @@ body {
 .cloth_detail {
   position: relative;
   width: 100%;
-  padding-right: 20px;
+  padding-left: 20px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1258,7 +1269,7 @@ body {
   position: relative;
   float: left;
   width: 100%;
-  padding-right: 20px;
+  padding-left: 20px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1433,7 +1444,7 @@ body {
 
 .section_heading {
   position: relative;
-  padding-right: 20px;
+  padding-left: 20px;
   width: 100%;
   margin-bottom: 20px;
   box-sizing: border-box;
@@ -1477,6 +1488,19 @@ body {
       font-size: 80%;
       margin-right: 5px; }
 
+.form-action {
+  position: relative;
+  padding-left: 20px; }
+  .form-action::after {
+    clear: both;
+    content: "";
+    display: block; }
+  .form-action #guide-msg {
+    padding: 20px; }
+    .form-action #guide-msg span {
+      padding: 5px 8px;
+      background: #ecf0f1 !important; }
+
 @media only screen and (max-width: 1100px) {
   .user_clothes .cloth {
     width: 31.33%;
@@ -1490,7 +1514,7 @@ body {
 @media only screen and (max-width: 900px) {
   .user_clothes .cloth {
     width: 46%;
-    margin-right: 4%;
+    margin-left: 4%;
     margin-bottom: 20px; } }
 
 @media only screen and (max-width: 850px) {
@@ -1502,40 +1526,42 @@ body {
   body {
     padding-top: 60px; }
   .left_sidebar {
-    width: 230px;
     top: 60px; }
   .sidebar_nav a {
     font-size: 14px;
     padding: 12px 15px; }
-  .page_content {
-    padding: 20px 0 20px 250px; }
   .site_header {
     height: 60px; }
   .global_navbar {
-    height: 60px; }
+    height: 60px;
+    width: auto; }
     .global_navbar ul {
       height: 60px; }
     .global_navbar a {
       font-size: 14px;
       padding: 23px 25px; }
-  .site_logo img {
+  .site_logo {
+    width: auto;
     height: 60px; }
+    .site_logo img {
+      height: 60px; }
   .logout {
-    height: 60px; }
+    height: 60px;
+    width: auto; }
     .logout .logout-btn {
       font-size: 14px; } }
 
 @media only screen and (max-width: 640px) {
   .left_sidebar {
-    width: 200px;
-    left: -200px; }
+    display: none;
+    width: 260px; }
   #trigger-sidebar {
     display: block; }
   .sidebar_nav a {
     font-size: 12px;
     padding: 10px 15px; }
   .page_content {
-    padding: 20px 0 20px 20px; }
+    padding: 20px 20px 20px 0; }
   .global_navbar a {
     padding: 23px 15px; } }
 
@@ -1564,7 +1590,7 @@ body {
     padding-left: 1%; }
     .user_clothes .cloth {
       width: 49%;
-      margin-right: 1%;
+      margin-left: 1%;
       margin-bottom: 5px; }
   .user_timeline {
     padding-right: 1%;

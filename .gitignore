@@ -1,4 +1,6 @@
-settings.*
 *.pyc
 database.*
 config.*
+
+media/
+static/

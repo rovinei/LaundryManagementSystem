@@ -24,7 +24,7 @@
 
 {% block add_cloth_form %}
 	<div class="add_cloth_form">
-		<form action="" method="POST" enctype="multipart/form-data">
+		<form id="formFileField" action="" method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
 
 			
@@ -51,10 +51,12 @@
 
 			<div class="row">
 				<div class="form-group">
-					<input id="id_image" class="inputfile" name="image" type="file" accept="image/*" capture="camera">
+				
+					<input id="id_image" class="inputfile" name="image" type="file" accept="image/*" capture="camera" data-multiple-caption="{count} files selected" multiple>
 					<label class="image_label" for="id_image">
 						<span id="selected_msg"><i class="fa fa-upload"></i>Choose image</span>
 					</label>
+
 				</div>
 			</div>
 

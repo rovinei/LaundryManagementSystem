@@ -13,7 +13,8 @@ body{
 .site_sm_container,
 .site_full_container{
 	position: relative;
-	margin: 0px;
+	margin: 0 auto;
+	max-width: 1400px;
 	@include clearfix();
 }
 
@@ -64,7 +65,7 @@ body{
 .global_navbar{
 	position: relative;
 	float: left;
-	width: 85%;
+	width: 75%;
 	height: 70px;
 	ul{
 		list-style-type: none;
@@ -121,8 +122,9 @@ body{
 }
 
 .logout{
-	position: absolute;
-	right: 20px;
+	position: relative;
+	float: right;
+	width: 10%;
 	height: 70px;
 
 	.logout-btn{
@@ -130,6 +132,7 @@ body{
 		display: block;
 		text-decoration: none;
 		color: $white;
+		text-align: center;
 		background: $pomegranate;
 		padding: 7px 15px;
 		line-height: 1;
@@ -148,10 +151,10 @@ body{
 
 .left_sidebar{
 	position: fixed;
-	width: 260px;
+	width: 280px;
 	float: left;
 	top: 70px;
-	left: 0;
+	
 	bottom: 0;
 	padding: 0 10px 100px 10px;
 	height: 100%;
@@ -227,7 +230,7 @@ body{
 	position: relative;
 	width: 100%;
 	float: right;
-	padding: 20px 0 20px 280px;
+	padding: 80px 0 20px 280px;
 	@include box-sizing(border-box);
 	@include clearfix();
 }
@@ -257,7 +260,7 @@ body{
 		float: left; 
 		text-decoration: none;
 		width: 23%;
-		margin-right: 2%;
+		margin-left: 2%;
 		margin-bottom: 20px;
 		background: $white;
 
@@ -408,7 +411,7 @@ body{
 .collect_cloth_form{
 	position: relative;
 	width: 100%;
-	padding-right: 20px;
+	padding-left: 20px;
 	@include box-sizing(border-box);
 	@include clearfix();
 
@@ -565,11 +568,16 @@ body{
  	}
 
  	.form-action{
- 		position: relative;
+ 		position: fixed;
  		float: left;
  		width: 100%;
  		display: block;
- 		margin-bottom: 20px;
+ 		background: $cloud;
+ 		top: 70px;
+ 		z-index: 2;
+ 		/* margin-bottom: 20px; */
+ 		padding: 20px 0 20px 20px;
+ 		@include box-sizing(border-box);
  		@include clearfix();
 
  		span{
@@ -652,7 +660,7 @@ body{
 	position: relative;
     float: left;
     width: 100%;
-    padding-right: 20px;
+    padding-left: 20px;
     margin-bottom: 20px;
     @include clearfix();
     @include box-sizing(border-box);
@@ -701,7 +709,7 @@ body{
 .cloth_detail{
 	position: relative;
 	width: 100%;
-	padding-right: 20px;
+	padding-left: 20px;
 	@include clearfix();
 	@include box-sizing(border-box);
 
@@ -819,7 +827,7 @@ body{
 	position: relative;
 	float: left;
 	width: 100%;
-	padding-right: 20px;
+	padding-left: 20px;
 	@include box-sizing(border-box);
 	@include clearfix();
 
@@ -1000,7 +1008,7 @@ body{
 
 .section_heading{
 	position: relative;
-	padding-right: 20px;
+	padding-left: 20px;
 	width: 100%;
 	margin-bottom: 20px;
 	@include box-sizing(border-box);
