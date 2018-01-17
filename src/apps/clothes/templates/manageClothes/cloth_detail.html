@@ -1,0 +1,74 @@
+{% extends 'manageClothes/base.html' %}
+
+{% block cloth_detail %}
+	{% if not cloth is None %}
+		<div class="cloth_detail">
+
+			<div class="user_profile">
+				<figure>
+					<img src="{{ cloth.user.get_profile_pic }}">
+				</figure>
+				<div class="username">
+					<a href="/account/user/{{ cloth.user.id }}/profile"> @{{ cloth.user.username }}</a>
+				</div>
+			</div>
+
+			<div class="cloth">
+				<figure>
+					<img class="cloth_img" src="{{ cloth.image.url }}">
+					
+					<img class="cloth_qrcode" src="{{ cloth.get_qrcode_url }}">
+				</figure>
+				<div class="info">
+					<div class="owner">
+						<strong>Username : </strong>
+						{{ cloth.user.username }}
+					</div>
+					<div class="department">
+						<strong>Department : </strong>
+						{{ cloth.user.department }}
+					</div>
+					<div class="roomnumber">
+						<strong>Room Number : </strong>
+						{{ cloth.user.room }}
+					</div>
+					<div class="type">
+						<strong>Type : </strong>
+						{{ cloth.type }}
+					</div>
+					<div class="shortcode">
+						<strong>Shortcode : </strong>
+						{{ cloth.shortcode }}
+					</div>
+					<div class="phonenumber">
+						<strong>Phonenumber : </strong>
+						{{ cloth.user.phonenumber }}
+					</div>
+					<div class="email">
+						<strong>Email : </strong>
+						{{ cloth.user.email }}
+					</div>
+
+					<div class="is_dirty">
+						<strong>Dirty : </strong>
+						{% if cloth.is_dirty %}
+							<i class="fa fa-check fa-lg icon-success"></i>
+						{% else %}
+							<i class="fa fa-times fa-lg icon-warning"></i>
+						{% endif %}
+					</div>
+
+					<div class="is_laundry">
+						<strong>At laundry : </strong>
+						{% if cloth.is_laundry %}
+							<i class="fa fa-check fa-lg icon-success"></i>
+						{% else %}
+							<i class="fa fa-times fa-lg icon-warning"></i>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+
+		</div>
+	{% endif %}
+{% endblock cloth_detail %}

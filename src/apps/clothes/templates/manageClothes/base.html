@@ -1,0 +1,160 @@
+{% load staticfiles %}
+<html>
+<head>
+	<title>Laundry management | clothes list</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<script type="text/javascript" src="{% static 'manageClothes/js/jquery.min.js' %}"></script>
+	<!--<script type="text/javascript" src="{% static 'manageClothes/js/jquery-ui.min.js' %}"></script>-->
+	<script type="text/javascript" src="{% static 'manageClothes/js/main.js' %}"></script>
+	<script type="text/javascript" src="{% static 'manageClothes/js/useful.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'manageClothes/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'manageClothes/fonts/font-awesome/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'manageClothes/fonts/flaticon/clothes/flaticon.css' %}">
+</head>
+<body>
+<!-- site header -->
+<div class="site_header">
+	<div class="site_md_container">
+		<div class="site_logo">
+			<img src="{% static 'manageClothes/images/logo/site_logo.png' %}">
+		</div>
+		<div class="global_navbar">
+			<ul class="nav">
+				<li><a href="/managecloth/dashboard">DASHBOARD</a></li>
+				<li><a href="/managecloth/laundry">LAUNDRY</a></li>
+				{% if request.user.is_admin %}
+				<li><a href="/managecloth/laundry/collect">COLLECT CLOTHES</a></li>
+				{% endif %}
+			</ul>
+		</div>
+		<div class="logout">
+			<a class="logout-btn" href="/account/logout">Logout</a>
+		</div>
+	</div>
+</div>
+<!-- /site header -->
+
+<div class="site_full_container">
+	<!-- Left sidebar -->
+	
+	<div id="trigger-sidebar">
+		<i class="fa fa-chevron-circle-right"></i>
+	</div>
+
+	<div class="left_sidebar">
+
+		<div class="user_profile">
+			<figure>
+				<img src="{{ request.user.get_profile_pic }}">
+			</figure>
+			<div class="username">
+				<a href="{{ request.user.get_timeline_url }}"> @{{ request.user.get_full_name }}</a>
+			</div>
+		</div>
+
+		<div class="sidebar_nav">
+			<ul class="nav">
+			
+				<li>
+					<a href="/managecloth/cloth/add">
+						<i class="fa fa-plus-circle"></i> Add New Cloth
+					</a>
+				</li>
+				<li>
+					<a href="/managecloth/cloth/remove">
+						<i class="fa fa-minus-circle"></i> Remove Cloth
+					</a>
+				</li>
+				<li>
+					<a href="/managecloth/cloth/mycloth">
+						<i class="flaticon-t-shirt-with-design"></i> My Clothes
+					</a>
+				</li>
+				<li>
+					<a href="/managecloth/user/dirty_bucket">
+						<i class="flaticon-nylon-jacket"></i> Dirty bucket
+					</a>
+				</li>
+				<li>
+					<a href="/managecloth/user/dirty_bucket/transfer">
+						<i class="flaticon-nylon-jacket"></i> Transfer to Dirty bucket
+					</a>
+				</li>
+				<li>
+					<a href="/managecloth/user/dirty_bucket/remove">
+						<i class="flaticon-nylon-jacket"></i> Remove From Dirty bucket
+					</a>
+				</li>
+				
+				<li>
+					<a href="/managecloth/laundry/mycloth">
+						<i class="flaticon-nylon-jacket"></i> My Clothes At Laundry
+					</a>
+				</li>
+				<li>
+					<a href="/managecloth/laundry/allcloth">
+						<i class="flaticon-denim-jacket"></i> All Clothes At Laundry
+					</a>
+				</li>
+				{% if request.user.is_admin %}
+				<li>
+					<a href="/managecloth/laundry/transfer">
+						<i class="fa fa-plus-circle"></i> Transfer Clothes To Laundry
+					</a>
+				</li>
+				<li>
+					<a href="/managecloth/laundry/remove">
+						<i class="fa fa-minus-circle"></i> Remove Clothes From Laundry
+					</a>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+	<!-- /Left sidebar -->
+
+	<!-- Page content -->
+	<div class="page_content">
+
+		{% block user_timeline %}
+
+		{% endblock user_timeline %}
+
+		{% block status_msg %}
+
+		{% endblock status_msg %}
+
+		<!-- add cloth form -->
+		{% block add_cloth_form %}
+
+		{% endblock add_cloth_form %}
+		<!-- /add cloth form -->
+
+		<!-- collect dirty cloth form -->
+		{% block collect_cloth_form %}
+
+		{% endblock collect_cloth_form %}
+		<!-- /collect dirty cloth form -->
+
+		{% block cloth_detail %}
+
+		{% endblock cloth_detail %}
+
+		<!-- user clothes list -->
+		{% block clothes_list %}
+			
+		{% endblock clothes_list %}
+		<!-- /user clothes list -->
+
+	</div>
+	<!-- /Page content -->
+
+</div>
+
+</body>
+</html>
