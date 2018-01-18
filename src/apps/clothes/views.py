@@ -116,16 +116,16 @@ def add_cloth(request):
 
 def user_laundry_cloth(request):
 	if request.user.is_authenticated:
-		user_clothes = Clothe.objects.filter(user=request.user,is_laundry=True,is_dirty=True)
 		context = dict()
+		user_clothes = Clothe.objects.filter(user=request.user, is_laundry=True, is_dirty=True)
 		context.update({
 			'user_clothes': user_clothes,
 		})
 
 		if not len(user_clothes)>0:
-			context.update({'page_guide_msg': 'no cloth found at laundry',})
+			context.update({'page_guide_msg': 'no cloth found at laundry'})
 		else:
-			context.update({'page_guide_msg': 'Total clothes found : '+str(len(user_clothes)),})
+			context.update({'page_guide_msg': 'Total clothes found : ' + str(len(user_clothes))})
 		return render(request, 'manageClothes/cloth_list.html', context)
 	else:
 		return redirect('/account/login')
@@ -169,11 +169,11 @@ def add_cloth_to_laundry(request):
 
 def remove_cloth_from_laundry(request):
 	if request.user.is_authenticated and request.user.is_admin:
-
-		context = {
-			'page_guide_msg': 'select clothes to take out from laundry',
+		context = dict()
+		context.update({
+			'page_guide_msg': "select clothes to take out from laundry",
 			'action_btn_name': 'Remove',
-		}
+		})
 
 		if request.method == 'POST':
 
@@ -187,20 +187,20 @@ def remove_cloth_from_laundry(request):
 												is_dirty=False
 												)
 			if removed_cloth:
-				context.update({'status_remove_laundry_msg': True,'count_obj':len(clothes_dict),})
+				context.update({'status_remove_laundry_msg': True, 'count_obj': len(clothes_dict)})
 			else:
-				context.update({'status_remove_laundry_msg': False,})
+				context.update({'status_remove_laundry_msg': False})
 
-			user_clothes = Clothe.objects.filter(is_laundry=True,is_dirty=True)
-			context.update({'user_clothes': user_clothes,})
+			user_clothes = Clothe.objects.filter(is_laundry=True, is_dirty=True)
+			context.update({'user_clothes': user_clothes})
 
-			return render(request,'manageClothes/checkable_cloth_list.html',context)
+			return render(request, 'manageClothes/checkable_cloth_list.html',context)
 		else:
 
-			user_clothes = Clothe.objects.filter(is_laundry=True,is_dirty=True)
-			context.update({'user_clothes': user_clothes,})
+			user_clothes = Clothe.objects.filter(is_laundry=True, is_dirty=True)
+			context.update({'user_clothes': user_clothes})
 
-			return render(request,'manageClothes/checkable_cloth_list.html',context)
+			return render(request, 'manageClothes/checkable_cloth_list.html', context)
 	else:
 
 		return redirect('/admin/login')
@@ -239,18 +239,18 @@ def remove_user_cloth(request):
 
 			if removed_cloth:
 				
-				context.update({'status_remove_msg': True,'count_obj':len(clothes_dict),})
+				context.update({'status_remove_msg': True, 'count_obj': len(clothes_dict)})
 			else:
-				context.update({'status_remove_msg': False,})
+				context.update({'status_remove_msg': False})
 
-			user_clothes = Clothe.objects.filter(user=request.user,is_laundry=False)
-			context.update({'user_clothes': user_clothes,})
-			return render(request,'manageClothes/checkable_cloth_list.html',context)
+			user_clothes = Clothe.objects.filter(user=request.user, is_laundry=False)
+			context.update({'user_clothes': user_clothes})
+			return render(request, 'manageClothes/checkable_cloth_list.html', context)
 
 		else:
 			user_clothes = Clothe.objects.filter(user=request.user,is_laundry=False)
-			context.update({'user_clothes': user_clothes,})
-			return render(request,'manageClothes/checkable_cloth_list.html',context)
+			context.update({'user_clothes': user_clothes})
+			return render(request, 'manageClothes/checkable_cloth_list.html', context)
 
 	else:
 		return redirect('/account/login')

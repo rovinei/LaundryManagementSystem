@@ -11,12 +11,15 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from easy_thumbnails.conf import Settings as thumbnail_settings
 from django.conf import global_settings
+from decouple import AutoConfig
 
-dotenv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), '.env')
-load_dotenv(dotenv_path)
+
+Config = AutoConfig(search_path=os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+# dotenv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), '.env')
+# load_dotenv(dotenv_path)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,13 +33,15 @@ FILE_UPLOAD_HANDLERS = ['src.utils.progresshandler.UploadProgressCachedHandler',
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SERVER_SECRET_KEY")
+SECRET_KEY = Config("SERVER_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-	'10.10.10.28'
+	'10.10.10.28',
+	'localhost',
+	'127.0.0.1',
 ]
 
 
@@ -101,10 +106,10 @@ WSGI_APPLICATION = 'src.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get("MYSQL_DATABASE"),
-        'HOST': os.environ.get("MYSQL_HOST"),
-        'USER': os.environ.get("MYSQL_USER"),
-        'PASSWORD': os.environ.get("MYSQL_PASSWORD"),
+        'NAME': Config("MYSQL_DATABASE"),
+        'HOST': Config("MYSQL_HOST"),
+        'USER': Config("MYSQL_USER"),
+        'PASSWORD': Config("MYSQL_PASSWORD"),
 
     }
 }
