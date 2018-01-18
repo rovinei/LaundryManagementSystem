@@ -1,0 +1,110 @@
+@import url(https://fonts.googleapis.com/css?family=Dosis:100,300,400,500,600,700);
+
+body{
+	background: #f8f8f8;
+	font-family: "Dosis", sans-serif;
+	font-size: 16px;
+	height: 100%;
+	position: relative;
+	margin: 0;
+	padding-top: 200px;
+}
+
+.site_md_container,.site_sm_container{
+	position: relative;
+	width: 100%;
+	padding: 0px 15%;
+	margin: 0px;
+	@include box-sizing(border-box);
+	@include clearfix();
+}
+
+.site_md_container{
+	width: 100%;
+	padding: 0px 5%;
+}
+
+.site_sm_container{
+	width: 100%;
+	padding: 0px 15%;
+}
+
+.title{
+	position: relative;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 40px;
+	h1{
+		color: #444;
+		font-weight: 300;
+		line-height: 1;
+		font-size: 30px;
+		margin: 0;
+		letter-spacing: 0px;
+		text-transform: uppercase;
+	}
+}
+
+.login{
+	position: relative;
+	width: 300px;
+	margin: 0 auto;
+	padding: 40px;
+	background: $wet-asphalt;
+	/*transform: translateY(50%);*/
+	@include clearfix();
+
+	form{
+		position: relative;
+		width: 100%;
+		float: left;
+		@include clearfix();
+	}
+
+	.form-group{
+		position: relative;
+		width: 100%;
+		float: left;
+		margin-bottom: 20px;
+		@include clearfix();
+		label{
+			width: 100%;
+			float: left;
+			color: $white;
+			margin-bottom: 5px;
+			font-size: 18px;
+		}
+
+		input[type="text"],
+		input[type="password"]{
+			width: 100%;
+			float: left;
+			@include box-sizing(border-box);
+			outline: none;
+			border: none;
+			height: 35px;
+			padding: 10px 20px;
+		}
+
+		.login_action{
+			-webkit-appearance: none;
+			position: relative;
+			display: block;
+			text-align: center;
+			border: 3px solid $asbestos;
+			background: $asbestos;
+			color: $white;
+			font-size: 20px;
+			line-height: 1;
+			padding: 7px 25px;
+			margin: 0 auto;
+
+			@include transition-prefix(all 0.3s ease);
+
+			&:hover{
+				background: darken($asbestos,10%);
+			}
+		}
+
+	}
+}

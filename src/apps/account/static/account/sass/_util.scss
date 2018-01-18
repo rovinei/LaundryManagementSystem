@@ -1,0 +1,113 @@
+/* -------------------------------------------------------------------------
+
+		util.sass
+		
+		案件に依存せず汎用的に使うClassを定義
+		
+------------------------------------------------------------------------- */
+
+/* float clear
+------------------------------------------------- */
+
+/*for modern browser*/
+.clear_fix:after{
+    content:".";
+    display:block;
+    height:0;
+    clear:both;
+	font-size:0;
+    line-height:0; 
+    visibility:hidden;
+}
+
+/*for IE 5.5-7*/
+.clear_fix{
+	zoom:1;
+}
+
+.clear_both{
+	clear:both;
+	height:1px;
+	font-size:1px;
+	text-align:center;
+	line-height:0;
+}
+
+.clear{
+	clear:both;
+}
+
+/* float
+------------------------------------------------- */
+
+.float_r{
+	float:right;
+	display:inline;
+}
+
+.float_l{
+	float:left;
+	display:inline;
+}
+
+/* text align
+-------------------------------------------------- */
+
+.text_center{
+	text-align: center !important;
+}
+
+.text_left{
+	text-align: left !important;
+}
+
+.text_right{
+	text-align: right !important;
+}
+
+
+/* font family
+----------------------------------------------------- */
+.lang_jp{
+	font-family: $font_jp;
+}
+
+.lang_en{
+	font-family: $font_dosis;
+}
+
+/* グリッドレイアウト用mixin (IE8以上)
+usage:
+■12分割で間隔が20pxのグリッドのクラスを作る場合
+・SASS
+@include grid_system(12, 20px);
+・HTML
+<div class="grid_system_12">  ← このdivへの幅指定はNG
+	<div class="grid_6"></div> ┐
+	<div class="grid_3"></div> ├ 子要素は合計が12になるようにクラス名を付ける
+	<div class="grid_3"></div> ┘
+</div>
+------------------------------------------------- */
+
+@mixin grid_children($space){
+	float:left;
+	@if $space{
+		@include box-sizing(border-box);
+		padding-left: $space;
+	}
+}
+
+@mixin grid_system( $num:12, $space:3%, $class:"grid_system_", $childrenClass:"grid_" ){
+	.#{$class}#{$num}{
+		@extend .clear_fix;
+		margin-left:-$space;
+		width: auto !important;
+
+		@for $i from 1 through $num {
+			> .#{$childrenClass}#{$i}{
+				@include grid_children($space);
+				width: #{100 / $num * $i}#{"%"};
+			}
+		}
+	}
+}

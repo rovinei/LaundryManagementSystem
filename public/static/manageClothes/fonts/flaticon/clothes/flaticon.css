@@ -1,0 +1,131 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 22/06/2016 15:22
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-size: 20px;
+  font-style: normal;
+  margin-left: 0;
+}
+
+.flaticon-ankle-boots:before { content: "\f100"; }
+.flaticon-backpack:before { content: "\f101"; }
+.flaticon-bag:before { content: "\f102"; }
+.flaticon-bag-1:before { content: "\f103"; }
+.flaticon-ballets-flats:before { content: "\f104"; }
+.flaticon-barrel-handbag:before { content: "\f105"; }
+.flaticon-belt:before { content: "\f106"; }
+.flaticon-bow-tie:before { content: "\f107"; }
+.flaticon-boxer:before { content: "\f108"; }
+.flaticon-boyfriend-low-jean:before { content: "\f109"; }
+.flaticon-briefcase:before { content: "\f10a"; }
+.flaticon-bucket-bag:before { content: "\f10b"; }
+.flaticon-cat-eye-glasses:before { content: "\f10c"; }
+.flaticon-chiffon-dress:before { content: "\f10d"; }
+.flaticon-chiffon-suffle-blouse:before { content: "\f10e"; }
+.flaticon-chino-shorts:before { content: "\f10f"; }
+.flaticon-chinos-pants:before { content: "\f110"; }
+.flaticon-circle-skirt:before { content: "\f111"; }
+.flaticon-cocktail-dress:before { content: "\f112"; }
+.flaticon-collarless-cotton-shirt:before { content: "\f113"; }
+.flaticon-cotton-cardigan:before { content: "\f114"; }
+.flaticon-cotton-polo-shirt:before { content: "\f115"; }
+.flaticon-denim-jacket:before { content: "\f116"; }
+.flaticon-denim-shirt:before { content: "\f117"; }
+.flaticon-denim-shorts:before { content: "\f118"; }
+.flaticon-draped-top:before { content: "\f119"; }
+.flaticon-drees:before { content: "\f11a"; }
+.flaticon-dress:before { content: "\f11b"; }
+.flaticon-dress-with-butterfly-sleeves:before { content: "\f11c"; }
+.flaticon-flare-pants:before { content: "\f11d"; }
+.flaticon-flat-shoes:before { content: "\f11e"; }
+.flaticon-flip-flops:before { content: "\f11f"; }
+.flaticon-formal-shirt:before { content: "\f120"; }
+.flaticon-gladiator-sandal:before { content: "\f121"; }
+.flaticon-harem-pants:before { content: "\f122"; }
+.flaticon-hat:before { content: "\f123"; }
+.flaticon-henley-shirt:before { content: "\f124"; }
+.flaticon-high-heel:before { content: "\f125"; }
+.flaticon-high-heels:before { content: "\f126"; }
+.flaticon-hobo-bag:before { content: "\f127"; }
+.flaticon-hooded-jacket:before { content: "\f128"; }
+.flaticon-jeans:before { content: "\f129"; }
+.flaticon-jersey-blazer:before { content: "\f12a"; }
+.flaticon-jersey-wrap-dress:before { content: "\f12b"; }
+.flaticon-jewelry-set:before { content: "\f12c"; }
+.flaticon-jumpsuit:before { content: "\f12d"; }
+.flaticon-knit-hat-with-pom-pom:before { content: "\f12e"; }
+.flaticon-leather-biker-jacket:before { content: "\f12f"; }
+.flaticon-leather-chelsea-boots:before { content: "\f130"; }
+.flaticon-leather-derby-shoe:before { content: "\f131"; }
+.flaticon-leather-gloves:before { content: "\f132"; }
+.flaticon-leather-shoes:before { content: "\f133"; }
+.flaticon-leggins:before { content: "\f134"; }
+.flaticon-lingerine-set:before { content: "\f135"; }
+.flaticon-loafer:before { content: "\f136"; }
+.flaticon-long-bandeau-dress:before { content: "\f137"; }
+.flaticon-long-sleeveless-dress:before { content: "\f138"; }
+.flaticon-long-sleeves-t-shirt:before { content: "\f139"; }
+.flaticon-lyocell-shirt-dress:before { content: "\f13a"; }
+.flaticon-mannequin:before { content: "\f13b"; }
+.flaticon-men-hat:before { content: "\f13c"; }
+.flaticon-men-socks:before { content: "\f13d"; }
+.flaticon-messenger-bag:before { content: "\f13e"; }
+.flaticon-nylon-jacket:before { content: "\f13f"; }
+.flaticon-off-the-shoulder-dress:before { content: "\f140"; }
+.flaticon-one-shoulder-dress:before { content: "\f141"; }
+.flaticon-oxford-wave-blazer:before { content: "\f142"; }
+.flaticon-oxford-wave-suit-pants:before { content: "\f143"; }
+.flaticon-padded-vest:before { content: "\f144"; }
+.flaticon-pants:before { content: "\f145"; }
+.flaticon-pegged-pants:before { content: "\f146"; }
+.flaticon-peplum-skirt:before { content: "\f147"; }
+.flaticon-peplum-skirt-1:before { content: "\f148"; }
+.flaticon-peplum-top:before { content: "\f149"; }
+.flaticon-pilot-sunglasses:before { content: "\f14a"; }
+.flaticon-platform-sandals:before { content: "\f14b"; }
+.flaticon-purse:before { content: "\f14c"; }
+.flaticon-rain-boots:before { content: "\f14d"; }
+.flaticon-scarf-on-hanger:before { content: "\f14e"; }
+.flaticon-shopping-bag:before { content: "\f14f"; }
+.flaticon-shutter-sunglasses:before { content: "\f150"; }
+.flaticon-sleepers:before { content: "\f151"; }
+.flaticon-slim-fit-pants:before { content: "\f152"; }
+.flaticon-slit-skirt:before { content: "\f153"; }
+.flaticon-sneaker:before { content: "\f154"; }
+.flaticon-sneakers:before { content: "\f155"; }
+.flaticon-sweater:before { content: "\f156"; }
+.flaticon-sweatpants:before { content: "\f157"; }
+.flaticon-t-shirt-with-design:before { content: "\f158"; }
+.flaticon-tank-top:before { content: "\f159"; }
+.flaticon-tie:before { content: "\f15a"; }
+.flaticon-trench-coat:before { content: "\f15b"; }
+.flaticon-tulle-skirt:before { content: "\f15c"; }
+.flaticon-v-neck-shirt:before { content: "\f15d"; }
+.flaticon-vest:before { content: "\f15e"; }
+.flaticon-watches:before { content: "\f15f"; }
+.flaticon-winter-hat:before { content: "\f160"; }
+.flaticon-women-socks:before { content: "\f161"; }
+.flaticon-wool-boots:before { content: "\f162"; }
+.flaticon-wool-gloves:before { content: "\f163"; }

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+//
+// Custom mixin
+// 
+
+// center vertical the element to its parents
+@mixin centering($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+// create preserved-3d element
+@mixin preserved3d(){
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
